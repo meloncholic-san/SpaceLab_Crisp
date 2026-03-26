@@ -1,0 +1,66 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.article-featured {
+    padding: 0 20px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    &__wrapper {
+
+    }
+    &__headline {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 34px;
+    }
+
+    &__title {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-regular;
+        font-size: 24px;
+    }
+
+    &__pagination {
+        display: flex;
+        gap: 4px;
+    }
+
+    &-prev {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #C4C4C4;
+        position: relative;
+        cursor: pointer;
+        caret-color: transparent;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 8px;
+                height: 8px;
+                border-top: 1.5px solid #828282;
+                border-left: 1.5px solid #828282;
+                transform: rotate(-45deg) translate(10%, -50%);
+            }
+    }
+    &-next {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #C4C4C4;
+        position: relative;
+        cursor: pointer;
+        caret-color: transparent;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 8px;
+                height: 8px;
+                border-top: 1.5px solid #828282;
+                border-left: 1.5px solid #828282;
+                transform: rotate(135deg) translate(20%, 70%);
+            }
+    }
+}

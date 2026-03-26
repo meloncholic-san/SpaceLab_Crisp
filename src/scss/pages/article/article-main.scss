@@ -1,0 +1,49 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.article-main {
+    &__wrapper {
+        display: flex;
+        padding: 0 20px;
+        gap: 100px;
+        justify-content: center;
+    }
+    &__content {
+        max-width: 818px;
+        &-title {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 32px; 
+            margin-bottom: 35px;
+        }
+
+        &-phrase {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 18px; 
+        }
+
+    }
+
+    &__image {
+        width: 100%;
+        &-wrapper {
+            width: 100%;
+        }
+    }
+
+    &__sidelane {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        max-width: 310px;
+        &-image {
+            width: 100%;
+            min-width: 140px;
+            &-wrapper {
+                width: 100%;
+            }
+        }
+    }
+
+}

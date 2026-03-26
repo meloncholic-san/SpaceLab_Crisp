@@ -1,0 +1,165 @@
+<article 
+  class="product"
+  data-id="{{id}}"
+  data-code="{{product_code}}"
+  data-price="{{price}}"
+  data-brand="{{brand}}"
+  data-tags="{{#if tags}}{{tags}}{{/if}}"
+  data-colors="{{#if colors}}{{colors}}{{/if}}"
+  data-sizes="{{#if sizes}}{{sizes}}{{/if}}"
+>
+
+  <div class="product__wrapper">
+
+    <!-- GALLERY -->
+    <div class="product__gallery">
+      
+      <div class="product__thumbnails">
+        {{#each image}}
+          <img 
+            class="product__thumbnail"
+            src="./img/main/products/{{this}}.webp"
+            data-src="./img/main/products/{{this}}.webp"
+            alt="thumbnail"
+          />
+        {{/each}}
+      </div>
+
+      <div class="product__main-image-wrapper">
+        <img 
+          class="product__main-image"
+          src="{{#if image}}./img/main/products/{{image.[0]}}.webp{{/if}}" 
+          alt="{{title}}"
+        />
+        <div class="product__zoom-lens"></div>
+        <div class="product__zoom-label"><img src="./img/products/hero/crisp-zoom.jpg" alt=""></div>
+      </div>
+      <div class="product__share">
+        <p class="product__share-phrase">Share:</p>
+        <ul class="product__share-list">
+          <li class="product__share-item">
+            <svg class="product__share-icon">
+              <use href="#icon-crisp_facebook"></use>
+            </svg>
+          </li>
+          <li class="product__share-item">
+            <svg class="product__share-icon">
+              <use href="#icon-crisp_twitter"></use>
+            </svg>
+          </li>
+          <li class="product__share-item">
+            <svg class="product__share-icon">
+              <use href="#icon-crisp_pinterest"></use>
+            </svg>
+          </li>
+          <li class="product__share-item">
+            <svg class="product__share-icon">
+              <use href="#icon-crisp_instagram"></use>
+            </svg>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="product__info">
+
+      <p class="product__breadcrumbs">
+        Home / Womens Dress / {{title}}
+      </p>
+
+      {{#if brand}}
+        <p class="product__brand">{{brand}}</p>
+      {{/if}}
+
+      <h1 class="product__title">{{title}}</h1>
+
+
+      <!-- COLORS -->
+      {{#if colors}}
+        <div class="product__colors">
+          <p class="product__label">SELECT COLOR</p>
+          <div class="product__colors-list">
+            {{#each colors}}
+              <span class="product__color {{this}}"></span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      <!-- SIZES -->
+      {{#if sizes}}
+        <div class="product__sizes">
+
+          <div class="product__sizes-header">
+            <p class="product__label">SELECT SIZE (INCHES)</p>
+            <a href="https://thoughtsocks.com/pages/size-guide-mens"  rel="noopener" rel="noreferrer" class="product__sizes-link">Size guide</a>
+          </div>
+
+          <div class="product__sizes-list" data-sizes="{{sizes}}">
+            {{#each allSizes}}
+              <span 
+                class="product__size 
+                  {{#if available}}available{{else}}disabled{{/if}}"
+                data-size="{{value}}"
+              >
+                {{label}}
+              </span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      <!-- PRICE -->
+      <div class="product__pricing">
+        <div class="product__pricing-quantity">
+          <p class="product__pricing-quantity-phrase product__label">QUANTITY</p>
+          <div class="product__pricing-quantity-actions">
+            <button class="product__pricing-quantity-btn-menus"></button>
+            <span class="product__pricing-quantity-span">1</span>
+            <button class="product__pricing-quantity-btn-plus"></button>
+          </div>
+        </div>
+
+        <div class="product__price">
+            <p class="product__label">PRICE TOTAL</p>
+            <div class="product__price-wrapper">
+              {{#if discount_percent}}
+                <span class="product__price--new" data-price="{{price}}">{{price}} EUR</span>
+                <span class="product__price--old">{{oldPrice}} EUR</span>
+                {{!-- <span class="product__discount">-{{discount_percent}}%</span> --}}
+              {{else}}
+                <span class="product__price--regular" data-price="{{price}}">{{price}} EUR</span>
+              {{/if}}
+            </div>
+
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="product__actions">
+        <button class="product__add-to-cart">ADD TO BAG</button>
+        <button class="product__wishlist"><svg><use href="#icon-crisp_heart-outline"></use></svg> SAVE</button>
+      </div>
+
+      <!-- Tags -->
+        <div class="product__tags">
+          <div class="product__tags-content">
+            <h4 class="product__tags-head arrow"></h4>
+            <p class="product__tags-phrase">FREE SHIPPING</p>
+          </div>
+          <div class="product__tags-content">
+            <h4 class="product__tags-head">PRODUCT CODE:</h4>
+            <p class="product__tags-phrase">{{product_code}}</p>
+          </div>
+          <div class="product__tags-content">
+            <h4 class="product__tags-head">TAGS:</h4>
+            <p class="product__tags-phrase">{{category}}</p>
+          </div>
+        </div>
+
+    </div>
+
+  </div>
+
+</article>

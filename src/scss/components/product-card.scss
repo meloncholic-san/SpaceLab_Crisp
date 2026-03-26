@@ -1,0 +1,139 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.product-card {
+    width: 100%;
+    height: 100%;
+    // max-width: 540px;
+    &__wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    &__image {
+        width: 100%;
+        caret-color: transparent;
+        &-wrapper {
+            width: 100%;
+        }
+    }
+    &__link {
+        color: black;
+    }
+
+    &__category {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-semibold;
+        font-size: 14px;
+        color: #BDBDBD;
+        text-transform: uppercase;
+        margin-top: 14px;
+    }
+
+    &__title {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-light;
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    &__sale {
+        position: absolute;
+        background-color: black;
+        color: white;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-regular;
+        font-size: 14px;
+        width: 40px;
+        height: 20px;
+        top: 15px;
+        text-align: center;
+    }
+
+    &__price {
+        &--regular {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-medium;
+            font-size: 22px;
+            color: black;
+        }
+        &--new {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-medium;
+            font-size: 22px; 
+            color: #EB5757;
+            margin-right: 4px;
+        }
+        &--old {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 14px;
+            text-decoration: line-through;
+            color: #828282;
+        }
+    }
+
+    &__colors {
+        display: flex;
+        gap: 20px;
+        margin-top: 16px;
+
+        span {
+        display: block;
+        width: 17px;
+        height: 17px;
+        caret-color: transparent;
+        position: relative;
+            &.active {
+                &::before {
+                position: absolute;
+                content: "";
+                width: 26px;
+                height: 26px;
+                border: 2px solid black;
+                transform: translate(-17%, -17%);
+                }
+            }
+
+            &.Charcoal {
+                background-color: #292A2D;
+            }
+            &.Ivory {
+                background-color: #F3ECE2;   
+            }
+            &.Navy-Blue {
+                background-color: #24426A;
+            }
+            &.Deep-Teal {
+                background-color: #18574A;
+            }
+            &.Warm-Gray {
+                background-color: #C2BEB6;
+            }
+            &.Muted-Indigo {
+                background-color: #666689;
+            }
+            &.Cool-Gray {
+                background-color: #AAABA7;
+            }
+            &.Burgundy {
+                background-color: #971E34;
+            }
+            &.Mustard {
+                background-color: #CBA13E;
+            }
+            &.Brown {
+                background-color: #73513C;
+            }
+            &.Dusty-Rose {
+                background-color: #DAB1B1;
+            }
+            &.Turquoise {
+                background-color: #2B9FA7;
+            }
+        }
+
+    }   
+}

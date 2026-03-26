@@ -1,0 +1,87 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.products-banner {
+    // height: 487px;
+    width: 100%;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    aspect-ratio: 1454 / 430;
+    max-height: 430px;
+    
+        &__wrapper {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        }
+    &__img {
+        right: 0;
+        position: absolute;
+        height: 100%;
+        z-index: -1;
+        // width: 100%;
+        max-width: 1210px;
+        
+            &-wrapper {
+                position: absolute;
+                inset: 0;
+
+            }
+
+            &-gradient {
+                position: absolute;
+                width: 80%;
+                height: 100%;
+                background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 33%, rgb(0, 0, 0) 74%, rgba(0, 0, 0, 0) 100%);
+                z-index: 0;
+            }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 10;
+        width: fit-content;
+        margin-left: 249px;
+        padding: 96px 20px 98px;
+    }
+
+    &__headline {
+        position: relative;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 56px;
+        margin-bottom: 17px;
+        text-transform: uppercase;
+        color: white;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 90%;
+                height: 2px;
+                right: 0;
+                top: -5px;
+                background-color: white;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 120%;
+                right: 0;
+                top: -5px;
+                background-color: white;
+            }
+    }
+
+    &__phrase {
+        font-family: variables.$font-family-second;
+        font-weight: variables.$font-weight-regular;
+        font-size: 25px;
+        margin-bottom: 24px;
+        max-width: 639px;
+        opacity: 0.9;
+        color: white;
+    }
+}

@@ -1,0 +1,22 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+
+.order-btn {
+    display: block;
+    width: 100%;
+    max-width: 175px;
+    font-family: variables.$font-family-main;
+    font-weight: variables.$font-weight-medium;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 15px 0;
+    border: 2px solid black;
+    caret-color: transparent;
+        @media (hover: hover) {
+            &:hover {
+                border: 2px solid rgba(141, 107, 107, 0.356);
+            }
+        }
+}

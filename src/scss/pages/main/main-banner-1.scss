@@ -1,0 +1,86 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.main-banner-1 {
+    // height: 487px;
+    width: 100%;
+    padding: 0 20px;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 130px;
+    aspect-ratio: 1210 / 487;
+    max-height: 487px;
+    
+        &__wrapper {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        }
+    &__img {
+        right: 0;
+        position: absolute;
+        height: 100%;
+        z-index: -1;
+        width: 100%;
+        max-width: 1210px;
+        
+            &-wrapper {
+                position: absolute;
+                inset: 0;
+
+            }
+
+            &-gradient {
+                position: absolute;
+                width: 80%;
+                height: 100%;
+                background: linear-gradient(90deg, rgb(221, 235, 241) 0%, rgb(211, 229, 238) 43%, rgb(200, 222, 236) 69%, rgba(255, 255, 255, 0) 100%);
+                z-index: 0;
+            }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 10;
+        width: fit-content;
+        margin-left: 249px;
+        padding: 96px 20px 98px;
+    }
+
+    &__headline {
+        position: relative;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 56px;
+        margin-bottom: 17px;
+        text-transform: uppercase;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 90%;
+                height: 2px;
+                right: 0;
+                top: -5px;
+                background-color: black;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 120%;
+                right: 0;
+                top: -5px;
+                background-color: black;
+            }
+    }
+
+    &__phrase {
+        font-family: variables.$font-family-second;
+        font-weight: variables.$font-weight-regular;
+        font-size: 25px;
+        margin-bottom: 24px;
+        max-width: 639px;
+        opacity: 0.9;
+    }
+}

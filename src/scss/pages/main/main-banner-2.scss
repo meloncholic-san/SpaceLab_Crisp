@@ -1,0 +1,70 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.main-banner-2 {
+    padding: 0 20px;
+    &__wrapper {
+        display: flex;
+        gap: 100px;
+            @include respond-to(lg) {
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 60px;
+            }
+    }
+
+    &__img {
+        width: 100%;
+        &-wrapper {
+        width: 56.9%;
+            @include respond-to(lg) {
+                width: 100%;
+            }
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 10;
+        width: fit-content;
+    }
+
+    &__headline {
+        position: relative;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 56px;
+        margin-bottom: 17px;
+        text-transform: uppercase;
+            @include respond-to(l) {
+                font-size: 46px;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                width: 90%;
+                height: 2px;
+                right: 0;
+                top: -5px;
+                background-color: black;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 120%;
+                right: 0;
+                top: -5px;
+                background-color: black;
+            }
+    }
+
+    &__phrase {
+        font-family: variables.$font-family-second;
+        font-weight: variables.$font-weight-regular;
+        font-size: 25px;
+        margin-bottom: 24px;
+        max-width: 639px;
+        opacity: 0.9;
+    }
+}

@@ -1,0 +1,209 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+
+.main-brand {
+    padding: 0 20px;
+    &__banner {
+        position: relative;
+        &-wrapper {
+            position: relative;
+            border: 2px solid #C4C4C4;
+            padding: 28px 11px;
+
+            overflow: hidden;
+        }
+        &-track {
+            display: flex;
+            // gap: 35px;
+            width: max-content;
+            animation: banner-scroll 20s linear infinite;
+            will-change: transform;
+        }
+        &-lane {
+            display: flex;
+            gap: 35px;
+            width: max-content;
+            margin-right: 35px;
+        }
+        &-item {
+            // max-width: 235px;
+            width: 235px;
+            height: 141px;
+                svg {
+                    display: block;
+                    margin: 0 auto;
+                }
+                &.chanel {
+                    svg {
+                    width: 142px;
+                    }
+                }
+                &.burberry {
+                    background-color: #F0F2F2;
+                    svg {
+                    width: 168px;
+                    }
+                }
+                &.dior {
+                    svg {
+                    width: 88px;
+                    }
+                }
+                &.fendi {
+                    svg {
+                    width: 101px;
+                    }
+                }
+                &.versage {
+                    svg {
+                    width: 135px;
+                    }
+                }
+                &.gucci {
+                    svg {
+                    width: 125px;
+                    }
+                }
+                &.armani {
+                    svg {
+                    width: 169px;
+                    }
+                }
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        &-mini {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: calc(50% - 15px);
+                &-wrapper {
+                    &.mini-1 {
+                        display: flex;
+                        gap: 43px;
+                        height: 432px;
+                        background: linear-gradient(
+                        90deg,
+                        rgba(241, 239, 240, 0) 0%,
+                        rgba(241, 240, 240, 1) 11%,
+                        rgba(243, 240, 239, 1) 100%
+                        );
+                        & .main-brand__content-mini-inner {
+
+                        // clip-path: inset(0px -150px 0px 0);
+                        }
+                        & .main-brand__content-mini-inner {
+                            padding-top: 82px;
+                            padding-left: 112px;
+                            right: 100px;
+                            position: absolute;
+                        }
+                        & .main-brand__content-headline {
+                            max-width: 221px;
+                        }
+                    }
+
+                    &.mini-2 {
+                        display: flex;
+                        flex-direction: row-reverse;
+                        background-color: #F2D5D1;
+                        height: 432px;
+                        & .main-brand__content-mini-inner {
+                            padding-top: 115px;
+                            padding-left: 94px;
+                            flex: 1;
+                        }
+                    }
+                }
+
+                &-inner {
+                    // flex: 1;
+                    z-index: 1;
+                }
+
+        }
+        &-big {
+            position: relative;
+            width: calc(50% - 15px);
+            background-color: #E0DDD5;
+            .main-brand__content-inner {
+                padding-left: 86px;
+                position: absolute;
+                bottom: 0;
+                padding-bottom: 103px;
+            }
+            .main-brand__content-headline {
+                font-size: 96px;
+                max-width: 357px;
+            }
+            
+            .main-brand__content-phrase {
+                font-size: 25px;
+            }
+        }
+
+
+        &-img {
+            width: 100%;
+            // position: absolute;
+            
+            caret-color: transparent;
+            &.img-1 {
+                max-width: 448px;
+            }
+            &.img-2 {
+                max-width: 557px;
+            }
+            &.img-3 {
+                max-width: 839px;                    
+                height: 100%;
+                    @include respond-to(md) {
+                            height: unset;
+                        }
+            }
+            &-wrapper {
+                width: 100%;
+                &.img-1 {
+                    max-width: 448px;
+                    z-index: -0;
+                    height: -webkit-fill-available;
+                    position: absolute;
+                }
+                &.img-2 {
+                    max-width: 557px;
+                    z-index: -0;
+                    height: -webkit-fill-available;
+                    position: absolute;
+                }
+                &.img-3 {
+                    max-width: 839px;
+                    height: 100%;
+                    position: absolute;
+                    right: 0;
+
+                }
+            }
+        }
+
+        &-headline {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-semibold;
+            font-size: 48px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        &-phrase {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-regular;
+            font-size: 24px;
+            margin-bottom: 50px;
+        }
+    }
+}

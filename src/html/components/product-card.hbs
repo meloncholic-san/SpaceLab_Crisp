@@ -1,0 +1,67 @@
+<article 
+  class="product-card"
+  data-id="{{id}}"
+  data-code="{{product_code}}"
+  data-price="{{price}}"
+  data-brand="{{brand}}"
+  data-tags="{{#if tags}}{{tags}}{{/if}}"
+  data-colors="{{#if colors}}{{colors}}{{/if}}"
+  data-sizes="{{#if sizes}}{{sizes}}{{/if}}"
+>
+  <div class="product-card__wrapper">
+
+
+      {{#if discount_percent}}
+        <span class="product-card__sale">-{{discount_percent}}%</span>
+      {{/if}}
+      <a href="./product?id={{id}}" class="product-card__link">
+        <div class="product-card__image-wrapper">
+          <img
+            class="product-card__image"
+            src="{{#if image}}./img/main/products/{{image.[0]}}.webp{{else}}./img/main/products/crisp_product_dress-1.webp{{/if}}"
+            alt="{{title}}"
+            loading="lazy"
+          />
+        </div>
+      </a>
+      <div class="product-card__content">
+        {{#if category}}
+          <p class="product-card__category">
+            {{category}}
+          </p>
+        {{/if}}
+
+        <h3 class="product-card__title">{{title}}</h3>
+
+        {{#if showBrand}}
+          {{#if brand}}
+            <p class="product-card__brand">{{brand}}</p>
+          {{/if}}
+        {{/if}}
+
+
+        <div class="product-card__price">
+          {{#if discount_percent}}
+            <span class="product-card__price--new">{{price}} EUR</span>
+            <span class="product-card__price--old">{{oldPrice}} EUR</span>
+          {{else}}
+            <span class="product-card__price--regular">{{price}} EUR</span>
+          {{/if}}
+        </div>
+
+        {{#if showColors}}
+          {{#if colors}}
+            <div class="product-card__colors">
+              {{#each colors}}
+                <span 
+                  class="product-card__color {{this}}"
+                ></span>
+              {{/each}}
+            </div>
+          {{/if}}
+        {{/if}}
+
+      </div>
+
+  </div>
+</article>

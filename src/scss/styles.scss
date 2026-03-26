@@ -1,0 +1,33 @@
+@use "@scss/utils/variables";
+@use "@scss/utils/reset";
+@use "@scss/fonts/fonts";
+@use "@scss/utils/animations";
+
+
+@use "@scss/components/order-btn";
+@use "@scss/components/product-card";
+
+@use "@scss/pages/main/main-hero";
+@use "@scss/pages/main/main-brand";
+@use "@scss/pages/main/main-products";
+@use "@scss/pages/main/main-banner-1";
+@use "@scss/pages/main/main-banner-2";
+@use "@scss/pages/main/main-featured";
+@use "@scss/pages/main/main-popular";
+
+@use "@scss/pages/products/products-hero";
+@use "@scss/pages/products/products-catalogue";
+@use "@scss/pages/products/products-banner";
+
+@use "@scss/pages/product/product-main";
+@use "@scss/pages/product/product";
+@use "@scss/pages/product/product-featured";
+
+@use "@scss/pages/article/article-hero";
+@use "@scss/pages/article/article-main";
+@use "@scss/pages/article/article-featured";
+
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
