@@ -5,8 +5,8 @@
     // height: 487px;
     width: 100%;
     position: relative;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    margin-top: -2px;
+    margin-bottom: -11px;
     aspect-ratio: 1454 / 430;
     max-height: 430px;
     
@@ -43,8 +43,8 @@
         position: relative;
         z-index: 10;
         width: fit-content;
-        margin-left: 249px;
-        padding: 96px 20px 98px;
+        margin-left: 158px;
+        padding: 0px 20px 0px;
     }
 
     &__headline {
@@ -52,16 +52,17 @@
         font-family: variables.$font-family-main;
         font-weight: variables.$font-weight-medium;
         font-size: 56px;
-        margin-bottom: 17px;
+        margin-bottom: 5px;
         text-transform: uppercase;
         color: white;
+        margin-top: 10px;
             &::before {
                 content: "";
                 position: absolute;
                 width: 90%;
                 height: 2px;
                 right: 0;
-                top: -5px;
+                top: -16px;
                 background-color: white;
             }
             &::after {
@@ -70,7 +71,7 @@
                 width: 2px;
                 height: 120%;
                 right: 0;
-                top: -5px;
+                top: -16px;
                 background-color: white;
             }
     }
@@ -83,5 +84,7 @@
         max-width: 639px;
         opacity: 0.9;
         color: white;
+        line-height: 39px;
+        letter-spacing: 0.1px;
     }
 }

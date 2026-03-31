@@ -44,6 +44,7 @@ async function applyFilters(container: HTMLElement, state: Filters) {
   });
   renderFiltersUI(state);
   renderActiveFilters(state);
+  toggleGlobalFiltersVisibility(state);
 }
 
 function toggleArrayValue(arr: string[], value: string) {
@@ -227,6 +228,7 @@ function renderActiveFilters(state: Filters) {
     const name = document.createElement("div");
 
     if (category === "colors") {
+      li.classList.add("color")
       name.className = `products-catalogue__global-item-name color ${value.replace(/\s+/g, "-")}`;
     } else {
       name.className = "products-catalogue__global-item-name";
@@ -344,7 +346,23 @@ function getFilterLabel(value: string, category: keyof Filters): string {
   return el?.getAttribute("data-label") || value;
 }
 
+function hasActiveFilters(state: Filters): boolean {
+  return (
+    state.brands.length > 0 ||
+    state.sizes.length > 0 ||
+    state.lengths.length > 0 ||
+    state.colors.length > 0 ||
+    state.priceMin !== 0 ||
+    state.priceMax !== 500
+  );
+}
 
+function toggleGlobalFiltersVisibility(state: Filters) {
+  const globalContainer = document.querySelector(".products-catalogue__global") as HTMLElement;
+  if (!globalContainer) return;
+
+  globalContainer.classList.toggle("active", hasActiveFilters(state));
+}
 
 export async function initProductsCatalogue() {
 

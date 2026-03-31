@@ -52,7 +52,7 @@ export default defineConfig({
       targets: [
         {
           src: './img/**/*',
-          dest: 'img',
+          dest: '',
         }
       ],
       structured: true,

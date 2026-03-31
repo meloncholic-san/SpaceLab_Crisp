@@ -6,16 +6,19 @@
     width: 100%;
     padding: 0 20px;
     position: relative;
-    margin-top: 60px;
-    margin-bottom: 130px;
-    aspect-ratio: 1210 / 487;
-    max-height: 487px;
+    margin-top: 65px;
+    margin-bottom: 69px;
+    aspect-ratio: 1210 / 467;
+    max-height: 467px;
     
         &__wrapper {
         position: relative;
         height: 100%;
         display: flex;
         align-items: center;
+            @include respond-to(lg) {
+                justify-content: center;
+            }
         }
     &__img {
         right: 0;
@@ -45,7 +48,13 @@
         z-index: 10;
         width: fit-content;
         margin-left: 249px;
-        padding: 96px 20px 98px;
+        padding: 95px 20px 78px;
+            @include respond-to(lg) {
+                margin-left: unset;
+            }
+            @include respond-to(sm) {
+                padding: 5px;
+            }
     }
 
     &__headline {
@@ -53,16 +62,26 @@
         font-family: variables.$font-family-main;
         font-weight: variables.$font-weight-medium;
         font-size: 56px;
-        margin-bottom: 17px;
+        // margin-bottom: 17px;
         text-transform: uppercase;
+            @include respond-to(lg) {
+                font-size: 24px;
+            }
+            @include respond-to(sm) {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
             &::before {
                 content: "";
                 position: absolute;
                 width: 90%;
                 height: 2px;
                 right: 0;
-                top: -5px;
+                top: -16px;
                 background-color: black;
+                    @include respond-to(sm) {
+                        top: -2px;
+                    }
             }
             &::after {
                 content: "";
@@ -70,8 +89,11 @@
                 width: 2px;
                 height: 120%;
                 right: 0;
-                top: -5px;
+                top: -16px;
                 background-color: black;
+                        @include respond-to(sm) {
+                        top: -2px;
+                    }
             }
     }
 
@@ -79,8 +101,18 @@
         font-family: variables.$font-family-second;
         font-weight: variables.$font-weight-regular;
         font-size: 25px;
-        margin-bottom: 24px;
+        margin-bottom: 36px;
         max-width: 639px;
         opacity: 0.9;
+        line-height: 39px;
+        letter-spacing: 0.1px;
+            @include respond-to(lg) {
+                font-size: 18px;
+            }
+            @include respond-to(sm) {
+                font-size: 10px;
+                line-height: unset;
+                margin-bottom: 12px;
+            }
     }
 }

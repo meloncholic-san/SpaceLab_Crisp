@@ -4,9 +4,13 @@
 
 .products-catalogue {
     padding: 0 20px;
+    overflow: hidden;
     &__wrapper {
         display: flex;
         gap: 30px;
+            @include respond-to(lg) {
+                flex-direction: column;
+            }
     }
     &__linking {
         font-family: variables.$font-family-second;
@@ -18,23 +22,35 @@
     &__filters {
 
         width: 355px;
+            @include respond-to(lg) {
+                width: unset;
+            }
             &-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 60px;
+            gap: 53px;
             }
     }
 
     &__global {
         width: 365px;
         border: 1px solid black;
-        padding: 25px 22px;
-        margin-bottom: 60px;
+        padding: 16px 23px;
+        padding-right: 27px;
+        margin-bottom: 50px;
+        margin-top: 6px;
+        display: none;
+            @include respond-to(lg) {
+                width: unset;
+            }
+            &.active {
+                display: block;
+            }
         &-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 46px;
+            margin-bottom: 26px;
             h2 {
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-regular;
@@ -46,12 +62,15 @@
             display: flex;
             gap: 9px;
             align-items: center;
+            margin-top: 10px;
+            margin-right: -3px;
 
             &-icon {
                 position: relative;
                 display: block;
                 width: 12px;
                 height: 12px;
+                margin-bottom: 1px;
                 &::before {
                     content: "";
                     position: absolute;
@@ -78,17 +97,19 @@
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-regular;
                 font-size: 14px;
+                text-transform: uppercase;
             }
         }
         &-category {
-            margin-top: 20px;
-            margin-bottom: 20px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        min-height: 67px;
         }
         &-title {
         font-family: variables.$font-family-main;
         font-weight: variables.$font-weight-regular;
         font-size: 24px; 
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         }
 
         &-list {
@@ -100,7 +121,10 @@
         &-item {
             display: flex;
             align-items: center;
-            gap: 9px;
+            gap: 5px;
+                &.color {
+                    gap: 20px;
+                }
             &-name {
                 font-family: variables.$font-family-second;
                 font-weight: variables.$font-weight-regular;
@@ -182,13 +206,14 @@
             }
             .products-catalogue__color-list {
                 display: flex;
+                margin-left: 3px;
             }
         }
         &-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 31px;
+            margin-bottom: 27px;
             h4 {
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-regular;
@@ -204,6 +229,13 @@
 
             &.price {
                 margin-bottom: 24px;
+                margin-bottom: 17px;
+            }
+            &.color {
+                margin-bottom: 17px;
+            }
+            &.dress-length {
+                // margin-bottom: 0;
             }
         }
         &-content {
@@ -215,7 +247,7 @@
         &-list {
         display: none;
         flex-direction: column;
-        gap: 20px;
+        gap: 25px;
         }
 
         &-item {
@@ -291,7 +323,7 @@
         &-list {
         display: none;
         flex-direction: column;
-        gap: 20px;
+        gap: 25px;
         }
 
         &-item {
@@ -431,6 +463,8 @@
             margin-left: auto;
             display: block;
             cursor: pointer;
+            margin-top: 61px;
+            text-transform: uppercase;
         }
     }
 
@@ -491,9 +525,11 @@
 
     &__content {
         position: relative;
-        padding-left: 30px;
+        padding-left: 40px;
         flex: 1;
-
+        @include respond-to(lg) {
+            padding-left: 0;
+        }
             &::before {
                 content: "";
                 position: absolute;
@@ -501,7 +537,10 @@
                 width: 1px;
                 height: 101%;
                 background-color: #C4C4C4;
-                left: 0px;
+                left: 10px;
+                    @include respond-to(lg) {
+                        content: none;
+                    }
             }
         
         &-filters {
@@ -509,29 +548,39 @@
             gap: 20px;
             justify-content: flex-end;
             margin-bottom: 20px;
+            margin-top: 8px;
         }
     }
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 25px;
-        row-gap: 40px;
+        row-gap: 35px;
+            @include respond-to(lg) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include respond-to(sm) {
+                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 10px;
+                row-gap: 15px;
+            }
     }
 
     &__pricing {
         position: relative;
             &::before {
-                content: "";
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                display: block;
-                border-top: 1px solid black;
-                border-left: 1px solid black;
-                z-index: 10;
-                right: 16px;
-                top: 50%;
-                transform: rotate(-135deg) translate(50%, 50%);
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            display: block;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            z-index: 10;
+            right: 16px;
+            top: 50%;
+            transform: rotate(-135deg) translate(100%, 40%);
             }
 
             select {
@@ -542,26 +591,30 @@
             width: 255px;
             height: 46px;
             padding: 11px;
+            padding-left: 8px;
             font-family: variables.$font-family-main;
             font-weight: variables.$font-weight-regular;
             font-size: 14px;
+                @include respond-to(sm) {
+                    max-width: 190px;
+                }
             }
     }
 
     &__something {
         position: relative;
             &::before {
-                content: "";
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                display: block;
-                border-top: 1px solid black;
-                border-left: 1px solid black;
-                z-index: 10;
-                right: 16px;
-                top: 50%;
-                transform: rotate(-135deg) translate(50%, 50%);
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            display: block;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            z-index: 10;
+            right: 16px;
+            top: 50%;
+            transform: rotate(-135deg) translate(90%, 40%);
             }
 
             select {
@@ -571,6 +624,7 @@
             width: 69px;
             height: 46px;
             padding: 11px;
+            padding-left: 8px;
             font-family: variables.$font-family-main;
             font-weight: variables.$font-weight-regular;
             font-size: 14px;

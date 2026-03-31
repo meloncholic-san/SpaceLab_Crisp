@@ -8,7 +8,7 @@ function initSwiper() {
     modules: [Navigation, Autoplay],
 
     slidesPerView: 5,
-    spaceBetween: 30,
+    spaceBetween: 26,
 
     loop: true,
 
@@ -38,4 +38,11 @@ export  async function initMainFeatured() {
     renderProductsCardCatalogue(featuredItems, container, {append: false, asSwiper: true} )
 
     initSwiper();
+
+
+    function Something<T, K>(value:T, something: K): K {
+      
+      return something;
+    }
+    Something<string, string>("123", "something");
 }

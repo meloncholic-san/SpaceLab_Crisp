@@ -6,6 +6,8 @@
 
 @use "@scss/components/order-btn";
 @use "@scss/components/product-card";
+@use "@scss/components/footer";
+@use "@scss/components/header";
 
 @use "@scss/pages/main/main-hero";
 @use "@scss/pages/main/main-brand";
@@ -14,6 +16,7 @@
 @use "@scss/pages/main/main-banner-2";
 @use "@scss/pages/main/main-featured";
 @use "@scss/pages/main/main-popular";
+@use "@scss/pages/main/main-article";
 
 @use "@scss/pages/products/products-hero";
 @use "@scss/pages/products/products-catalogue";
@@ -26,6 +29,7 @@
 @use "@scss/pages/article/article-hero";
 @use "@scss/pages/article/article-main";
 @use "@scss/pages/article/article-featured";
+
 
 @import 'swiper/css';
 @import 'swiper/css/navigation';

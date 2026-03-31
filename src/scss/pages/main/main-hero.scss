@@ -3,7 +3,7 @@
 
 .main-hero {
     position: relative;
-    padding: 130px 20px 20px;
+    padding: 137px 20px 40px;
     width: 100%;
     overflow: hidden;
     &__wrapper {
@@ -18,6 +18,15 @@
             padding-bottom: 40px;
             display: flex; 
             justify-content: space-between;
+                @include respond-to(lg) {
+                    flex-direction: column;
+                    gap: 50px;
+                    padding-bottom: 50px;
+                    padding-top: 50px;
+                }
+                @include respond-to(sm) {
+                    gap: 20px;
+                }
         }
     }
     &__headline {
@@ -26,10 +35,25 @@
             font-weight: variables.$font-weight-semibold;
             font-size: 86px;
             max-width: 504px;
+            line-height: 96px;
+            margin-bottom: 46px;
+                @include respond-to(md) {
+                    font-size: 24px;
+                    line-height: 26px;
+                    max-width: 250px;
+                    margin-bottom: 24px;
+                }
         }
         &-wrapper {
             width: fit-content;
             position: relative;
+            margin-top: 158px;
+            margin-left: 24px;
+                @include respond-to(lg) {
+                    margin-top: 24px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
                 &::before {
                     content: "";
                     position: absolute;
@@ -37,7 +61,13 @@
                     border-right: 2px solid black;
                     width: 496px;
                     height: 100px;
-                    right: -41px;
+                    right: -42px;
+                    top: -24px;
+                        @include respond-to(md) {
+                            width: 100%;
+                            right: 0px;
+                            
+                        }
                 }
         }
         &-span {
@@ -49,12 +79,25 @@
     &__swiper {
         overflow: visible !important;
         clip-path: inset(-50px -150px -50px 0);
-        max-width: 804px;
+        max-width: 793px;
         margin-left: unset !important;
         margin-right: unset !important;
         align-self: center !important;
         transform-style: preserve-3d;
+            @include respond-to(lg) {
+                margin-left: auto !important;
+                margin-right: auto !important;
+                max-width: 600px !important;
+                clip-path: inset(-100px -250px -100px 0);
+            }
+            @include respond-to(sm) {
+                max-width: 390px !important;
 
+            }
+            @include respond-to(xxs) {
+                max-width: 280px !important;
+
+            }
             &:not(.swiper-initialized) { 
                 .swiper-slide {
                     opacity: 0;
@@ -62,13 +105,13 @@
                 }
                 .swiper-slide:nth-child(1) {
                     opacity: 1 !important;
-                    transform: translate3d(0px, 0px, -34.8101px) rotateX(0deg) rotateY(0deg) scale(1);
+                    transform: translate3d(13px, -1px, -34.8101px) rotateX(0deg) rotateY(0deg) scale(1);
                     z-index: 10;
                 }
 
                 .swiper-slide:nth-child(2) {
                     opacity: 1 !important;
-                    transform: translate3d(-90px, 0px, 5px) rotateX(0deg) rotateY(0deg) scale(1) !important; 
+                    transform: translate3d(-75px, 0px, 5px) rotateX(0deg) rotateY(0deg) scale(1) !important; 
                     z-index: 20;
                 }
             }
@@ -80,6 +123,7 @@
             width: fit-content !important;
             transition: transform 1s ease !important;
             // width: 416px !important;
+            transform: translate3d(13px,7px,5px) scale(1) !important;
             opacity: 0 !important;
             cursor: grab;
         }
@@ -87,16 +131,13 @@
         .swiper-slide-active {
             opacity: 1 !important;
             z-index: 2 !important;
+            transform: translate3d(13px,7px,5px) scale(1) !important;
         }
 
         .swiper-slide-next {
             opacity: 1 !important;
             z-index: 15 !important;
-            transform: translate3d(-90px, 0px, 5px) rotateX(0deg) rotateY(0deg) scale(1) !important; 
-        }
-
-        .swiper-slide-prev {
-
+            transform: translate3d(-73px, 0px, 5px) rotateX(0deg) rotateY(0deg) scale(1) !important; 
         }
 
         &-pagination {
@@ -121,7 +162,8 @@
                             border-left: 2px solid white;
                             left: 50%;
                             top: 50%;
-                            transform: rotate(-45deg) translate(20%, -50%);
+                            transform: rotate(-45deg) translate(0%, -70%);
+
                     }
                 svg {
                     display: none !important;
@@ -144,7 +186,7 @@
                         border-left: 2px solid white;
                         left: 50%;
                         top: 50%;
-                        transform: rotate(135deg) translate(0%, 50%);
+                        transform: rotate(135deg) translate(15%, 90%);
                     }
                 svg {
                     display: none !important;
@@ -153,8 +195,8 @@
         }
     &-navigation {
         position: absolute;
-        bottom: 24px !important;
-        left: 28px !important;
+        bottom: 22px !important;
+        left: 29px !important;
         text-align: left !important;
         flex-direction: row;
         display: flex;
@@ -169,10 +211,41 @@
             cursor: pointer;
             &.active {
                 background-color: black;
+                width: 22px;
+                height: 22px;
             }
         }
     }
-   
+    &-image {
+        &-1 {
+            @include respond-to(md) {
+                max-width: 340px;
+            }
+            @include respond-to(sm) {
+                max-width: 280px;
+            }
+            @include respond-to(xs) {
+                max-width: 250px;
+            }
+            @include respond-to(xxs) {
+                max-width: 180px;
+            }
+        }
+        &-2 {
+            @include respond-to(md) {
+                max-width: 280px;
+            }
+            @include respond-to(sm) {
+                max-width: 220px;
+            }
+            @include respond-to(xs) {
+                max-width: 150px;
+            }
+            @include respond-to(xxs) {
+                max-width: 140px;
+            }
+        }
+    }
     }
 
 
@@ -185,6 +258,9 @@
             height: 100%;
             z-index: -1;
             inset: 0;
+                @include respond-to(md) {
+                    object-fit: cover;
+                }
             &-wrapper {
                 position: relative;
             }

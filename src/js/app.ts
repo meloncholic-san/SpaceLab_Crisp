@@ -1,4 +1,5 @@
 import '@scss/styles.scss';
+import { initHeader } from './components/init-header';
 
 
 // import { initLazyImages } from './components/init-lazyimages.js';
@@ -8,7 +9,8 @@ import '@scss/styles.scss';
 document.addEventListener('DOMContentLoaded', async () => {
 
   const page = document.body.dataset.page;
-  
+  initHeader();
+
   if (page === 'main') {
     const { initMain } = await import('./pages/main');
     initMain();   

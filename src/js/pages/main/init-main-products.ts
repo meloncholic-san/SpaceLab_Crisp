@@ -47,7 +47,7 @@ async function onFilterClick(
 }
 
 async function onLoadMore(
-  e: Event,
+  // e: Event,
   container: HTMLElement,
   state: { currentPage: number; currentTag: string }, 
   loadMoreBtn: HTMLButtonElement,
@@ -93,5 +93,5 @@ export async function initMainProducts() {
     renderProductsCardCatalogue(initialProducts, container, { showColors: false, filter: state.currentTag });
 
     filters.addEventListener("click", (e) => onFilterClick(e, container, state, loadMoreBtn));
-    loadMoreBtn.addEventListener("click", (e) => onLoadMore(e, container, state, loadMoreBtn));
+    loadMoreBtn.addEventListener("click", () => onLoadMore(container, state, loadMoreBtn));
 }

@@ -4,13 +4,13 @@
 
 .product-main {
     margin-top: 172px;
-    margin-bottom: 70px;
+    margin-bottom: 54px;
     &__wrapper {
         max-width: 1242px;
         margin: 0 auto;
     }
     &-content {
-        margin-bottom: 40px;
+        margin-bottom: 31px;
     }
     &__accordion {
         display: flex;
@@ -53,7 +53,7 @@
         &.active {
             .product-main__accordion-content {
                 max-height: 800px;
-                padding: 30px 0 20px;
+                padding: 30px 0 0px;
             }
             .product-main__accordion-header {
                 border-bottom: 1px solid #C4C4C4;
@@ -66,6 +66,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 25px 0;
+        padding-bottom: 17px;
             p {
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-regular;
@@ -78,7 +79,10 @@
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
             display: flex;
-            gap: 50px;
+            justify-content: space-between;
+                @include respond-to(sm) {
+                    gap: 12px;
+                }
             &-section {
                 margin-bottom: 15px;
             }
@@ -86,19 +90,23 @@
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-regular;
                 font-size: 14px;
-                margin-bottom: 20px;
+                margin-bottom: 12px;
             }
 
             &-phrase {
                 font-family: variables.$font-family-second;
                 font-weight: variables.$font-weight-regular;
                 font-size: 14px;
+                line-height: 20px;
+                    @include respond-to(sm) {
+                        font-size: 12px;
+                    }
             }
 
             &-list {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
+                gap: 11px;
             }
             
             &-item {
@@ -115,6 +123,24 @@
                     font-family: variables.$font-family-second;
                     font-weight: variables.$font-weight-regular;
                     font-size: 14px;
+                    @include respond-to(sm) {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            &-right {
+                .product-main__accordion-content-label {
+                    margin-left: 70px;
+                        @include respond-to(sm) {
+                            margin-left: 0;
+                        }
+                }
+                .product-main__accordion-content-phrase {
+                    margin-left: 70px;
+                        @include respond-to(sm) {
+                            margin-left: 0;
+                        }
                 }
             }
         }

@@ -3,6 +3,8 @@
 
 .main-banner-2 {
     padding: 0 20px;
+    margin-top: 110px;
+
     &__wrapper {
         display: flex;
         gap: 100px;
@@ -11,12 +13,15 @@
                 align-items: center;
                 gap: 60px;
             }
+            @include respond-to(sm) {
+                gap: 20px;
+            }
     }
 
     &__img {
         width: 100%;
         &-wrapper {
-        width: 56.9%;
+        width: 56.4%;
             @include respond-to(lg) {
                 width: 100%;
             }
@@ -34,10 +39,16 @@
         font-family: variables.$font-family-main;
         font-weight: variables.$font-weight-medium;
         font-size: 56px;
-        margin-bottom: 17px;
+        margin-bottom: 29px;
+        margin-top: 14px;
         text-transform: uppercase;
             @include respond-to(l) {
                 font-size: 46px;
+            }
+            @include respond-to(sm) {
+                font-size: 16px;
+                width: fit-content;
+                margin-bottom: 8px;
             }
             &::before {
                 content: "";
@@ -45,8 +56,11 @@
                 width: 90%;
                 height: 2px;
                 right: 0;
-                top: -5px;
+                top: -14px;
                 background-color: black;
+                    @include respond-to(sm) {
+                        right: -5px;
+                    }
             }
             &::after {
                 content: "";
@@ -54,8 +68,11 @@
                 width: 2px;
                 height: 120%;
                 right: 0;
-                top: -5px;
+                top: -14px;
                 background-color: black;
+                    @include respond-to(sm) {
+                        right: -5px;
+                    }
             }
     }
 
@@ -63,8 +80,19 @@
         font-family: variables.$font-family-second;
         font-weight: variables.$font-weight-regular;
         font-size: 25px;
-        margin-bottom: 24px;
+        margin-bottom: 31px;
         max-width: 639px;
         opacity: 0.9;
+        line-height: 39px;
+        letter-spacing: 0.1px;
+            @include respond-to(sm) {
+                font-size: 14px;
+                line-height: 24px;
+                margin-bottom: 10px;
+            }
+    }
+
+    &__order-btn {
+        margin-left: -4px;
     }
 }

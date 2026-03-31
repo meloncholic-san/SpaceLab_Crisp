@@ -39,11 +39,11 @@ heroSwiper.on('slideChangeTransitionStart', () => {
   const activeSlide = heroSwiper.slides[heroSwiper.activeIndex] as HTMLElement;
   const nextSlide = heroSwiper.slides[(heroSwiper.activeIndex + 1) % heroSwiper.slides.length] as HTMLElement;
 
-    leavingSlide.style.setProperty('transform', 'translate3d(-150px,50px,-5px) rotateX(-20deg) scale(0.8)', 'important');
+    leavingSlide.style.setProperty('transform', 'translate3d(-150px,50px,-5px) rotateX(0deg) scale(0.8)', 'important');
     leavingSlide.style.setProperty('opacity', '0.5', 'important');
     leavingSlide.style.setProperty('z-index', '5', 'important');
 
-    activeSlide.style.setProperty('transform', 'translate3d(0,0,5px) scale(1)', 'important');
+    activeSlide.style.setProperty('transform', 'translate3d(13px,-1px,5px) scale(1)', 'important');
     activeSlide.style.setProperty('opacity', '1', 'important');
     activeSlide.style.setProperty('z-index', '10', 'important');
 
@@ -67,7 +67,7 @@ heroSwiper.on('slideChangeTransitionEnd', () => {
     nextSlide.style.setProperty('opacity', '', 'important');
 
     activeSlide.style.setProperty('z-index', '10', 'important');
-    activeSlide.style.setProperty('transform', 'translate3d(0,0,5px) scale(1)', 'important');
+    activeSlide.style.setProperty('transform', 'translate3d(13px,-1px,5px) scale(1)', 'important');
     activeSlide.style.setProperty('opacity', '1', 'important');
 
 

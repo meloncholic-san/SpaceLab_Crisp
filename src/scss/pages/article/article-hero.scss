@@ -3,7 +3,7 @@
 
 .article-hero {
     padding: 0 20px;
-    margin-top: 120px;
+    margin-top: 134px;
     margin-bottom: 30px;
     &__wrapper {
         margin: 0 auto;
@@ -37,12 +37,21 @@
             font-size: 48px; 
             transform: translate(-50%, -50%);
             background-color: white;
-            width: 60%;
+            width: 66%;
             height: 100px;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 8px;
+                @include respond-to(lg) {
+                    font-size: 22px;
+                    height: 60px;
+                }
+                @include respond-to(sm) {
+                    font-size: 14px;
+                    height: 40px;
+                }
         }
     }
 

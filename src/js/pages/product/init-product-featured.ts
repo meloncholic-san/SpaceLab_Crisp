@@ -8,7 +8,7 @@ function initSwiper() {
     modules: [Navigation, Autoplay],
 
     slidesPerView: 5,
-    spaceBetween: 30,
+    spaceBetween: 26,
 
     loop: true,
 

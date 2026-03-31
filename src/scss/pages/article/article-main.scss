@@ -7,20 +7,32 @@
         padding: 0 20px;
         gap: 100px;
         justify-content: center;
+            @include respond-to(md) {
+                gap: 40px;
+                flex-direction: column;
+            }
+            @include respond-to(sm) {
+                gap: 20px;
+            }
     }
     &__content {
         max-width: 818px;
+        margin-left: -15px;
         &-title {
             font-family: variables.$font-family-main;
             font-weight: variables.$font-weight-regular;
             font-size: 32px; 
-            margin-bottom: 35px;
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
 
         &-phrase {
-            font-family: variables.$font-family-main;
+            font-family: variables.$font-family-second;
             font-weight: variables.$font-weight-regular;
             font-size: 18px; 
+                @include respond-to(sm) {
+                    font-size: 14px;
+                }
         }
 
     }
@@ -29,6 +41,7 @@
         width: 100%;
         &-wrapper {
             width: 100%;
+
         }
     }
 
@@ -37,11 +50,17 @@
         flex-direction: column;
         gap: 25px;
         max-width: 310px;
+            @include respond-to(md) {
+                flex-direction: row;
+                max-width: 580px;
+                margin: 0 auto;
+            }
         &-image {
             width: 100%;
             min-width: 140px;
             &-wrapper {
                 width: 100%;
+                margin-top: 25px;
             }
         }
     }
