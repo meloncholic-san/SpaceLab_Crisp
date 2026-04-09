@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-Dv4lwO5Z.js";import{t}from"./handlebars-D9rcRd2d.js";var n=`<article \r
+import{n as e}from"./chunk-CRbAPIz2.js";import{t}from"./handlebars-DMnQGoVe.js";var n=`<article \r
   class="product-card"\r
   data-id="{{id}}"\r
   data-code="{{product_code}}"\r
