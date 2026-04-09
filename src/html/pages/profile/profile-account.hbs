@@ -1,0 +1,50 @@
+<section class="profile__section account" data-page="account">
+
+  <h1 class="profile-account__title">Account Information</h1>
+
+  <form id="profile-account-form" class="profile-account-form">
+
+
+    <div class="profile-account__group">
+      <label>First Name <span>*</span></label>
+      <input type="text" name="firstName" />
+    </div>
+
+    <div class="profile-account__group">
+      <label>Last Name <span>*</span></label>
+      <input type="text" name="lastName" />
+    </div>
+
+
+    <div class="profile-account__checkboxes">
+
+      <label class="profile-account__checkbox">
+        <input type="checkbox" id="change-email-toggle" />
+        Change Email
+      </label>
+
+      <div class="profile-account__group is-hidden" id="email-field">
+        <label>New Email <span>*</span></label>
+        <input type="email" name="email" />
+      </div>
+
+
+      <label class="profile-account__checkbox">
+        <input type="checkbox" id="change-password-toggle" />
+        Change Password
+      </label>
+
+      <div class="profile-account__group is-hidden" id="password-field">
+        <label>New Password <span>*</span></label>
+        <input type="password" name="password" />
+      </div>
+
+    </div>
+
+    <div class="profile-account__actions">
+      <button class="profile-account__btn" type="submit">SAVE</button>
+    </div>
+
+  </form>
+
+</section>

@@ -1,0 +1,74 @@
+<div class="favourites-item" data-id="{{id}}">
+    <div class="favourites-item__content">
+
+        <div class="favourites-item__image-wrapper">
+            <img       
+                class="favourites-item__image"      
+                src="{{#if image}}./img/main/products/{{image.[0]}}.webp{{else}}./img/main/products/crisp_product_dress-1.webp{{/if}}"
+                alt="{{title}}"
+                loading="lazy" 
+            />
+        </div>
+        
+        <div class="favourites-item__info">
+            <h3>{{title}}</h3>
+
+            {{#if hasDiscount}}
+            <div class="favourites-item__pricing">
+                <span class="old-price">{{price}} EUR</span>
+                <span class="price">{{finalPrice}} EUR</span>
+            </div>
+            <span class="discount-badge">-{{discount_percent}}%</span>
+            {{else}}
+                <span class="price">{{finalPrice}} EUR</span>
+            {{/if}}
+        </div>
+
+        <div class="favourites-item__actions">
+            <div class="favourites-item__quantity-wrapper">
+                <input 
+                    type="number" 
+                    id="quantity-{{id}}"
+                    class="favourites-item__quantity" 
+                    value="1" 
+                    min="1" 
+                    max="9"
+                    step="1"
+                />
+            </div>
+            <button class="favourites-item__btn-add">ADD TO CART</button>
+        </div>
+
+    </div>
+
+    <div class="favourites-item__sidebar">
+        <button class="cart-product__actions-btn update" data-action="update">
+            <svg class="cart-product__actions-icon">
+                <use href="#icon-crisp_cart_update"></use>
+            </svg>
+        </button>
+        <button class="cart-product__actions-btn remove" data-action="remove">
+            <div class="cart-product__actions-icon-x">
+            </div>
+        </button>
+    </div>
+
+    <div class="favourites-item__modal">
+        {{#if colors.length}}
+        <div class="favourites-item__colors">
+            {{#each colors}}
+                <span data-color="{{this}}" class="favourites-item__color-badge {{this}} {{#if (eq this ../selectedColor)}}active{{/if}}"></span>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        {{#if sizes.length}}
+        <div class="favourites-item__sizes">
+            {{#each sizes}}
+                <span  data-size="{{this}}" class="favourites-item__size-badge {{#if (eq this ../selectedSize)}}active{{/if}}">{{this}}</span>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+
+</div>

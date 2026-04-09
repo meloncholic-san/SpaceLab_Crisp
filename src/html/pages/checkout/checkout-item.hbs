@@ -1,0 +1,25 @@
+<article class="checkout-item">
+  <img class="checkout-item__image" src="{{imageUrl}}" alt="{{title}}" />
+
+  <div class="checkout-item__content">
+    <div class="checkout-item__inner">
+      <h4 class="checkout-item__title">{{title}}</h4>
+      <p class="checkout-item__total">{{total}} EUR</p>
+    </div>
+
+    <p class="checkout-item__quantity">QTY: <span>{{quantity}}</span></p>
+    <div class="checkout-item__opener">View Details <span></span></div>
+    <div class="checkout-item__details">
+      {{#if selected_color}}
+        <span class="checkout-item__color {{colorClass}}"></span>
+      {{/if}}
+
+      {{#if sizeLabel}}
+        <span>{{sizeLabel}}</span>
+      {{/if}}
+    </div>
+
+  </div>
+
+
+</article>

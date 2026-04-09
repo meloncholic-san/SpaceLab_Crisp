@@ -1,0 +1,244 @@
+<section class="checkout">
+  <p class="checkout__breadcrumbs">Home / Create Order</p>
+
+  <div class="checkout__steps">
+    <div class="checkout__step active">
+      <div class="checkout__step-inner">
+          <div class="checkout__step-line"></div>
+          <div class="checkout__step-number first"><p></p></div>
+      </div>
+      <p class="checkout__step-phrase">Shipping</p>
+    </div>
+
+    <div class="checkout__step">
+      <div class="checkout__step-inner">
+          <div class="checkout__step-line"></div>
+          <div class="checkout__step-number"><p>2</p></div>
+      </div>
+      <p class="checkout__step-phrase">Review & Payments</p>
+    </div>
+  </div>
+
+
+  <div class="checkout__wrapper">
+
+    <div class="checkout__content first">
+      <div class="checkout__form-wrapper">
+
+        <h2 class="checkout__login-title">Shipping Address</h2>
+
+        <form class="checkout__login" id="checkout__login">
+
+          <div class="checkout__field">
+            <label>Email <span>*</span></label>
+            <input type="email" name="email" required />
+          </div>
+
+          <div class="checkout__field">
+            <label>Password</label>
+            <input type="password" name="password" />
+          </div>
+
+          <p class="checkout__login-phrase">You already have an account with us. Sign in or continue as guest.</p>
+
+          <div class="checkout__login-inner">
+            <button type="button" class="checkout__login-btn">LOGIN</button>
+            <a class="checkout__login-forgot" href="">Forgot Your Password</a>
+          </div>
+
+        </form>
+
+        <form class="checkout__shipping" id="checkout__shipping">
+
+          <div class="checkout__field">
+            <label>First Name <span>*</span></label>
+            <input type="text" name="firstName" required />
+          </div>
+
+          <div class="checkout__field">
+            <label>Last Name <span>*</span></label>
+            <input type="text" name="lastName" required />
+          </div>
+
+          <div class="checkout__field">
+            <label>Street Address <span>*</span></label>
+            <input type="text" name="street" required />
+          </div>
+
+          <div class="checkout__field">
+            <label>Zip/Postal Code</label>
+            <input type="text" name="zip" />
+          </div>
+
+
+          <div class="checkout__field">
+            <label>Country <span>*</span></label>
+            <div class="cart-select checkout-select" data-select="country">
+              <div class="cart-select__selected">United States</div>
+              <div class="cart-select__dropdown"></div>
+            </div>
+          </div>
+
+          <div class="checkout__field">
+            <label>State/Province <span>*</span></label>
+            <div class="cart-select checkout-select" data-select="state">
+              <div class="cart-select__selected">Select state</div>
+              <div class="cart-select__dropdown"></div>
+            </div>
+          </div>
+
+          <div class="checkout__radios">
+            <h3>Shipping Methods</h3>
+            <div class="checkout__radios-inner">
+              <label class="checkout__shipping-method">
+                <input type="radio" name="shipping" value="flat" class="checkout__shipping-method__radio" checked>
+                <span class="checkout__shipping-method__custom"></span>
+                <div class="checkout__shipping-method__content">
+                  <span class="checkout__shipping-method__price">$5.00</span>
+                  <span class="checkout__shipping-method__title">Fixed</span>
+                  <span class="checkout__shipping-method__desc">Flat Rate</span>
+                </div>
+              </label>
+
+              <label class="checkout__shipping-method">
+                <input type="radio" name="shipping" value="best" class="checkout__shipping-method__radio">
+                <span class="checkout__shipping-method__custom"></span>
+                <div class="checkout__shipping-method__content">
+                  <span class="checkout__shipping-method__price">$10.00</span>
+                  <span class="checkout__shipping-method__title">Table Rate</span>
+                  <span class="checkout__shipping-method__desc">Best Way</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="checkout__shipping-actions">
+            <button type="submit" class="checkout__shipping-next">
+              NEXT
+            </button>
+            <a class="checkout__shipping-back" href="./cart.html">BACK</a>
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+
+    <div class="checkout__content hidden second">
+      <h2 class="checkout__content-title">Payment Method:</h2>
+      <p class="checkout__content-phrase">Check / Money order</p>
+      
+      <div class="checkout__content-checkbox-wrapper">
+        <label class="checkout__custom-checkbox">
+          <input type="checkbox" class="checkout__custom-checkbox__input" checked>
+          <span class="checkout__custom-checkbox__custom"></span>
+          <span class="checkout__custom-checkbox__label">My billing and shipping address are the same</span>
+        </label>
+      </div>
+      
+      <div class="checkout__payment">
+        <p class="checkout__payment-phrase">
+          <span class="firstname">{{firstName}}</span>
+          <span class="lastname">{{lastName}}</span>
+        </p>
+        <p class="checkout__payment-phrase">
+          <span class="street"></span>
+        </p>
+        <p class="checkout__payment-phrase">
+          <span class="region"></span>
+          <span class="zip"></span>
+        </p>
+        <p class="checkout__payment-phrase">
+          <span class="country"></span>
+        </p>
+      </div>
+
+      <div class="checkout__payment-actions">
+        <button type="submit" class="checkout__payment-order">PLACE ORDER</button>
+        <button class="checkout__payment-back">BACK</button>
+      </div>
+
+      <div class="checkout__payment-discount">
+        <h3>Apply Discount Code</h3>
+        <input name="discountCode" placeholder="Enter discount code" />
+        <button>Apply Discount</button>
+      </div>
+    </div>
+
+
+    <div class="checkout__summary">
+      <div class="checkout__summary-inner">
+        <h3 class="checkout__summary-title">Order Summary</h3>
+
+        <div class="checkout__totals">
+          <div class="checkout__subtotal">
+            <span>Subtotal</span>
+            <span>{{subtotal}} EUR</span>
+          </div>
+
+          <div class="checkout__shipping-cost">
+            <span>Shipping</span>
+            <span id="shipping-cost">{{shippingCost}} EUR</span>
+          </div>
+
+          <div class="checkout__shipping-method-name">
+            <span></span>
+            <span id="shipping-method-display">{{shippingMethodLabel}}</span>
+          </div>
+        </div>
+
+        <div class="checkout__pricing">
+          <div class="checkout__total">
+            <span>Order Total</span>
+            <span id="order-total">{{total}} EUR</span>
+          </div>
+          <div class="checkout__cart-toggle">
+            <p>{{itemCount}} item(s) in Cart!</p>
+            <button class="checkout__toggle-items" type="button"></button>
+          </div>
+        </div>
+
+        <div class="checkout__items hidden">
+          {{#each items}}
+            {{> components/checkout-item this}}
+          {{/each}}
+        </div>
+      </div>
+
+
+      <div class="checkout__summary-stage">
+        <div class="checkout__summary-stage-inner">
+          <h2 class="checkout__content-title">Payment Method:</h2>
+
+          <div class="checkout__payment">
+            <p class="checkout__payment-phrase">
+              <span class="firstname">{{firstName}}</span>
+              <span class="lastname">{{lastName}}</span>
+            </p>
+            <p class="checkout__payment-phrase">
+              <span class="street"></span>
+            </p>
+            <p class="checkout__payment-phrase">
+              <span class="region"></span>
+              <span class="zip"></span>
+            </p>
+            <p class="checkout__payment-phrase">
+              <span class="country"></span>
+            </p>
+
+            <button class="checkout__summary-back"></button>
+          </div>
+
+        </div>
+
+        <div class="checkout__summary-stage-inner">
+          <p class="checkout__payment-phrase">{{shipmentMethod}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

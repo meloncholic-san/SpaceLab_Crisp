@@ -1,0 +1,62 @@
+<div 
+  class="cart-product" 
+  data-id="{{id}}"
+  data-product-id="{{product_id}}"
+  data-color="{{selected_color}}"
+  data-size="{{selected_size}}"
+>
+  <div class="cart-product__image-wrapper">
+    <img class="cart-product__image" src="{{imageUrl}}" alt="{{title}}" />
+
+    <div class="cart-product__info">
+      <h4>{{title}}</h4>
+
+      <span 
+        class="cart-product__color {{selected_color}}" 
+        data-color="{{selected_color}}"
+        data-action="change-color"
+      ></span>
+
+    </div>
+  </div>
+
+  <div class="cart-product__price">
+    {{price}} EUR
+  </div>
+
+  <div class="cart-product__size" data-action="change-size">
+    {{#if sizeLabel}}
+      {{sizeLabel}}
+    {{else}}
+      —
+    {{/if}}
+  </div> 
+  
+
+  <div class="cart-product__quantity">
+    <button class="cart-product__quantity-btn-menus" data-action="decrease"></button>
+      <span class="cart-product__quantity-span">{{quantity}}</span>
+    <button class="cart-product__quantity-btn-plus" data-action="increase"></button>
+  </div>
+
+  <div class="cart-product__total">
+    {{total}} EUR
+  </div>
+
+  <div class="cart-product__actions">
+    <button class="cart-product__actions-btn like" data-action="like">
+      <svg class="cart-product__actions-icon">
+        <use href="#icon-crisp_cart_like"></use>
+      </svg>
+    </button>
+    <button class="cart-product__actions-btn update" data-action="update">
+      <svg class="cart-product__actions-icon">
+        <use href="#icon-crisp_cart_update"></use>
+      </svg>
+    </button>
+    <button class="cart-product__actions-btn remove" data-action="remove">
+      <div class="cart-product__actions-icon-x">
+      </div>
+    </button>
+  </div>
+</div>

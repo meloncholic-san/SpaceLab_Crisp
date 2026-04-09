@@ -39,10 +39,4 @@ export  async function initMainFeatured() {
 
     initSwiper();
 
-
-    function Something<T, K>(value:T, something: K): K {
-      
-      return something;
-    }
-    Something<string, string>("123", "something");
 }

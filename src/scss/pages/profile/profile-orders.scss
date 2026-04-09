@@ -1,0 +1,58 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+
+.profile-orders {
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    font-family: variables.$font-family-main;
+    font-weight: variables.$font-weight-regular;
+    font-size: 24px; 
+    margin-bottom: 28px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid #E5E5E5;
+    padding: 16px 20px;
+        @include respond-to(xs) {
+            gap: 20px;
+        }
+  }
+
+  &__id {
+    font-size: 16px;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__status {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-transform: capitalize;
+
+    &--pending {
+      background: #FFF4E5;
+      color: #E67E22;
+    }
+
+    &--completed {
+      background: #EAFBF1;
+      color: #27AE60;
+    }
+
+    &--error {
+      background: #FDEAEA;
+      color: #E74C3C;
+    }
+  }
+}

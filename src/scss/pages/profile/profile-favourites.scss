@@ -1,0 +1,44 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.profile-favourites {
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 660px;
+        gap: 30px;
+            @include respond-to(sm) {
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+            @include respond-to(xs) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 60px;
+            @include respond-to(sm) {
+                flex-direction: column;
+            }
+    }
+
+
+    &__button {
+        text-transform: uppercase;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 14px;
+        color: #828282;
+        border: 2px solid #828282;
+        width: 170px;
+        height: 40px;
+        text-align: center;
+        background-color: #F0F2F2;
+            @include respond-to(sm) {
+                width: 100%;
+            }
+    }
+}

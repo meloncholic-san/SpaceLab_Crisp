@@ -1,0 +1,85 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.profile-account {
+        &__title {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 24px; 
+            margin-bottom: 36px;
+                @include respond-to(md) {
+                    text-align: center;
+                }
+        }
+        &-form {
+            max-width: 528px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+                @include respond-to(md) {
+                    margin: 0 auto;
+                }
+        }
+        &__group {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+            @include respond-to(md) {
+                gap: 20px;
+            }
+            &.is-hidden {
+                display: none;
+            }
+        label {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-regular;
+            font-size: 16px;
+            color: #3F3F3F;
+            height: fit-content;
+            margin-top: 4px;
+
+            span {
+                color: red;
+                margin-left: 2px;
+            }
+        }
+
+        input {
+            flex: 1;
+            max-width: 392px;
+            border: 1px solid #C4C4C4;
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-regular;
+            font-size: 16px;
+            height: 44px;
+            padding-left: 16px;
+        }
+        .just-validate-error-label {
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+        }
+    }
+    &__checkbox {
+        margin-bottom: 18px;
+        font-family: variables.$font-family-second;
+        font-weight: variables.$font-weight-regular;
+        font-size: 14px;
+        color: #828282;
+    }
+    &__checkboxes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__btn {
+        color: white;
+        background-color: black;
+        width: 140px;
+        height: 50px;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 14px; 
+    }
+}

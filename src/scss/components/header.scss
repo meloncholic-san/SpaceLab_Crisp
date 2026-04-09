@@ -4,25 +4,101 @@
 
 .header {
     background-color: #000000;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
     &__wrapper {
-    padding: 35px 21px;
+    padding: 34px 21px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    transition: all 0.3s ease-out;
+        &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        // position: absolute;
+        }
+
     }
     &__logo {
         width: 94px;
         height: 44px;
     }
+    &__burger-open {
+        display: none;
+        display: block;
+        position: relative;
+        padding: 7px 4px;
+        width: 24px;
+        height: 18px;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        margin-top: -4px;
+        caret-color: transparent;
+        display: none;
+            &::before {
+                position: absolute;
+                content: "";
+                display: block;
+                top: 40%;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: white;
+            }
+            @include respond-to(md) {
+                display: block;
+            }
+    }
+    &__burger-close {
+        display: block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 44px;
+        right: 22px;
+        caret-color: transparent;
+        cursor: pointer;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: white;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: white;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+    }
     &__section {
         display: flex;
         gap: 30px;
+        @include respond-to(md) {
+            display: none;
+        }
     }
     &__nav {
         &-list {
             display: flex;
             flex-direction: row;
-            gap: 28px;
+            gap: 29px;
+            margin-top: -6px;
+                @include respond-exact(xl) {
+                    margin-left: 319px;
+                }
         }
         &-item {
             a {
@@ -78,34 +154,46 @@
 
     &__auth {
         display: flex;
-        gap: 12px;
+        gap: 11px;
+        margin-top: 5px;
         &-link {
                 font-family: variables.$font-family-main;
                 font-weight: variables.$font-weight-semibold;
                 font-size: 14px;
                 color: white;
                 text-transform: uppercase;
+                    &.hidden {
+                        display: none;
+                    }
+                    &.profile {
+                        display: none;
+                        &.active {
+                            display: inline;
+                        }
+                    }
         }
     }
 
     &__user-content {
         display: flex;
-        gap: 20px;
+        gap: 16px;
     }
     &__favourite {
         &-icon {
             width: 24px;
             height: 24px;
             fill: white;
+            margin-top: 3px;
         }
     }
     &__cart {
         display: flex;
-        gap: 10px;
+        gap: 13px;
 
         &-icon {
             width: 18px;
             height: 20px;
+            margin-top: 4px;
         }
         &-stats {
             display: flex;
@@ -125,3 +213,171 @@
         }
     }
 }
+
+
+
+
+.header-menu {
+        &__wrapper {
+        height: 0;
+        padding: 34px 21px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        // transform: translateX(-100%);
+        transition: all 0.3s ease-out;
+        pointer-events: none;
+        background-color: black;
+        opacity: 0;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        
+            &.active {
+                height: 100dvh;
+                // transform: translateX(0);
+                opacity: 1;
+                pointer-events: all;
+                overflow-y: auto;
+            }
+        }
+        &__logo {
+            width: 94px;
+            height: 44px;
+            &-link {
+                align-self: flex-start;
+
+            }
+        }
+        &__section {
+            display: flex;
+            gap: 30px;
+                &.two {
+                    @include respond-to(xs) {
+                        align-self: flex-start;
+                        flex-direction: column;
+                    }
+                }
+        }
+        &__nav {
+            &-list {
+                display: flex;
+                flex-direction: column;
+                gap: 29px;
+                margin-top: -6px;
+            }
+            &-item {
+                a {
+                    color: white;
+                    font-family: variables.$font-family-main;
+                    font-weight: variables.$font-weight-semibold;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    position: relative;
+                    &.active {
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            width: 167%;
+                            height: 1px;
+                            left: 50%;
+                            bottom: -5px;
+                            background-color: #EB5757;
+                            transform: translate(-50%, 0);
+                        }
+                    }
+                }
+            }
+            &-form {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                &-icon {
+                    width: 16px;
+                    height: 16px;
+                }
+                label {
+                    height: 16px;
+                }
+                input {
+                    border: none;
+                    font-family: variables.$font-family-main;
+                    font-weight: variables.$font-weight-semibold;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    color: white;
+                    background-color: black;
+                    &::placeholder {
+                    font-family: variables.$font-family-main;
+                    font-weight: variables.$font-weight-semibold;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    color: white;
+                    }
+                }
+            }
+        }
+
+        &__auth {
+            display: flex;
+            gap: 11px;
+            margin-top: 5px;
+            &-link {
+                    font-family: variables.$font-family-main;
+                    font-weight: variables.$font-weight-semibold;
+                    font-size: 14px;
+                    color: white;
+                    text-transform: uppercase;
+                    &.hidden {
+                            display: none;
+                        }
+                    &.profile {
+                        display: none;
+                        &.active {
+                            display: inline;
+                        }
+                    }
+            }
+        }
+
+        &__user-content {
+            display: flex;
+            gap: 16px;
+        }
+        &__favourite {
+            &-icon {
+                width: 24px;
+                height: 24px;
+                fill: white;
+                margin-top: 3px;
+            }
+        }
+        &__cart {
+            display: flex;
+            gap: 13px;
+
+            &-icon {
+                width: 18px;
+                height: 20px;
+                margin-top: 4px;
+            }
+            &-stats {
+                display: flex;
+                flex-direction: column;
+            }
+            &-phrase {
+                font-family: variables.$font-family-second;
+                font-weight: variables.$font-weight-medium;
+                font-size: 12px;
+                color: white;
+            }
+            &-price {
+                font-family: variables.$font-family-second;
+                font-weight: variables.$font-weight-bold;
+                font-size: 14px;
+                color: white;
+            }
+        }
+    }

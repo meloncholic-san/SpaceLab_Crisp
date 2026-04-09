@@ -1,0 +1,75 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.profile-address {
+        &-title {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 24px; 
+            margin-bottom: 28px;
+                @include respond-to(md) {
+                    text-align: center;
+                }
+                &.--bottom {
+                    margin-top: 50px;
+                }
+        }
+        &-form {
+            max-width: 541px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            // gap: 18px;
+                @include respond-to(md) {
+                    margin: 0 auto;
+                }
+
+                .checkout__field {
+                        margin-bottom: 15px;
+                            @include respond-to(md) {
+                                gap: 20px;
+                            }
+                        input {
+                        max-width: 392px;
+                            @include respond-to(md) {
+                                font-size: 14px;
+                            }
+                        }
+                        label {
+
+                        @include respond-to(md) {
+                                font-size: 14px;
+                                min-width: 110px;
+                            }
+                        }
+                }
+                .checkout-select {
+                    max-width: 392px;
+                        @include respond-to(md) {
+                            font-size: 14px;
+                        }
+                }
+        }
+
+        &-street-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 392px;
+            flex: 1;
+            height: 103px;
+        }
+    &__btn {
+        button {
+        color: white;
+        background-color: black;
+        width: 140px;
+        height: 50px;
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 14px;
+        text-transform: uppercase; 
+        }
+        margin-top: 40px;
+    }
+}

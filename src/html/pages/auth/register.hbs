@@ -1,0 +1,115 @@
+<section class="register">
+  <div class="register__wrapper">
+    <p class="register__breadcrumbs">Home / Create New Customer Account</p>
+    <h1 class="register__title">Create New Customer Account</h1>
+
+    <form class="register__form" id="register-form">
+
+        <div class="register__form-wrapper">
+            <div class="register__section">
+                <h2 class="register__section-title">Personal Information</h2>
+
+                <div class="register__field">
+                    <label class="register__label" for="firstName">
+                        First name <span>*</span>
+                    </label>
+                    <input
+                        class="register__input"
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="John"
+                        required
+                    />
+                </div>
+
+                <div class="register__field">
+                    <label class="register__label" for="lastName">
+                        Last name <span>*</span>
+                    </label>
+                    <input
+                        class="register__input"
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Doe"
+                        required
+                    />
+                </div>
+
+                <div class="register__checkbox">
+                    <input
+                        type="checkbox"
+                        id="newsletter"
+                        name="newsletter"
+                    />
+                    <label for="newsletter">Sign Up for Newsletter</label>
+                </div>
+            </div>
+
+            <div class="register__section section-2">
+                <h2 class="register__section-title">Sign Up for Newsletter</h2>
+
+                <div class="register__field">
+                    <label class="register__label" for="email">
+                        Email <span>*</span>
+                    </label>
+                    <input
+                        class="register__input"
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    />
+                </div>
+
+                <div class="register__field">
+                    <label class="register__label" for="password">
+                        Password <span>*</span>
+                    </label>
+                    <div class="register__password-wrapper">
+                        <input
+                            class="register__input"
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                        />
+                        <p class="register__password-strength" id="password-strength">
+                            Password Strength: No Password
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="register__field">
+                    <label class="register__label" for="confirmPassword">
+                        Confirm Password <span>*</span>
+                    </label>
+                    <input
+                        class="register__input"
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div class="register__actions">
+                <button type="submit" class="register__submit">
+                Create an Account
+                </button>
+
+                <a href="./login.html" class="register__back">
+                Back
+                </a>
+            </div>
+        </div>
+
+
+    </form>
+  
+  </div>
+</section>

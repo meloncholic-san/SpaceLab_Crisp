@@ -1,0 +1,310 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+
+.cart-product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+        @include respond-to(lg) {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+    &__image {
+        width: 84px;
+        height: 104px;
+            @include respond-to(lg) {
+                width: 100%;
+                height: auto;
+            }
+        &-wrapper {
+            display: flex;
+            gap: 18px;
+            // margin-right: 35px;
+            @include respond-to(lg) {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &__color,
+    .color-option {
+
+            width: 15px;
+            height: 15px;
+            display: block;
+            caret-color: transparent;
+            position: relative;
+            cursor: pointer;
+
+            &.Charcoal {
+                background-color: #292A2D;
+            }
+            &.Ivory {
+                background-color: #F3ECE2;   
+            }
+            &.Navy-Blue {
+                background-color: #24426A;
+            }
+            &.Deep-Teal {
+                background-color: #18574A;
+            }
+            &.Warm-Gray {
+                background-color: #C2BEB6;
+            }
+            &.Muted-Indigo {
+                background-color: #666689;
+            }
+            &.Cool-Gray {
+                background-color: #AAABA7;
+            }
+            &.Burgundy {
+                background-color: #971E34;
+            }
+            &.Mustard {
+                background-color: #CBA13E;
+            }
+            &.Brown {
+                background-color: #73513C;
+            }
+            &.Dusty-Rose {
+                background-color: #DAB1B1;
+            }
+            &.Turquoise {
+                background-color: #2B9FA7;
+            }
+    }
+
+    &__color {
+        &::before {
+            position: absolute;
+            content: "";
+            width: 23px;
+            height: 23px;
+            border: 1px solid #C4C4C4;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:has(.color-dropdown) {
+            background-color: transparent;
+            &::before {
+                border: none;
+            }
+        }
+    }
+
+    .color-option {
+        &.active {
+            &::before {
+                position: absolute;
+                content: "";
+                width: 23px;
+                height: 23px;
+                border: 1px solid #C4C4C4;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .color-dropdown {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+            @include respond-to(lg) {
+                transform: translateX(-50%);
+            }
+    }
+
+    &__info {
+
+        @include respond-to(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h4 {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-medium;
+            font-size: 18px; 
+            width: 187px;
+            min-height: 45px;
+            margin-bottom: 17px;
+            line-height: 23px;
+                @include respond-to(lg) {
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 0;
+                }
+        }
+    }
+
+    &__price {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-medium;
+            font-size: 14px; 
+            // margin-right: 40px;
+            min-width: 78px;
+                @include respond-to(lg) {
+                    text-align: center;
+                }
+    }
+
+    &__size {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-medium;
+            font-size: 14px; 
+            // margin-right: 40px;
+            position: relative;
+            cursor: pointer;
+            &:has(.size-dropdown) {
+                color: transparent;
+            }
+
+    }
+
+    .size-dropdown {
+        position: absolute;
+        top: -50%;
+        color: black;
+            @include respond-to(lg) {
+                display: flex;
+                gap: 10px;
+                transform: translateX(-50%);
+            }
+    }
+
+    .size-option {
+        cursor: pointer;
+        &.active {
+            color: #971E34;
+        }
+    }
+
+    &__quantity {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 120px;
+        height: 42px;
+        padding: 10px 18px;
+        border: 1px solid #C4C4C4;
+        // margin-right: 40px;
+        
+
+        &-btn-menus {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    top: 50%;
+                    left: 0;
+                    background-color: #C4C4C4;
+                }
+        }
+
+        &-btn-plus {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    top: 50%;
+                    left: 1px;
+                    background-color: #C4C4C4;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 2px;
+                    height: 100%;
+                    top: 1px;
+                    left: 50%;
+                    background-color: #C4C4C4;
+                }
+        }
+
+        &-span {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 16px;
+        }
+    }
+
+    &__total {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-medium;
+            font-size: 14px; 
+            // margin-right: 30px;
+            min-width: 86px;
+                @include respond-to(lg) {
+                    text-align: center;
+                }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 10px;
+        caret-color: transparent;
+        &-btn {
+            width: 24px;
+            height: 24px;
+            background-color: #E6F1FA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &-icon {
+            width: 11px;
+            height: 11px;
+        }
+
+        &-icon-x {
+            width: 11px;
+            height: 11px;
+            position: relative;
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 1.5px;
+                    background-color: black;
+                    transform: rotate(45deg);
+                    border-radius: 50px;
+                    left: 0px;
+                    top: 4px;
+                }
+                &::after {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 1.5px;
+                    background-color: black;
+                    transform: rotate(-45deg);
+                    border-radius: 50px;
+                    right: 0px;
+                    top: 4px;
+                }
+        }
+    }
+}

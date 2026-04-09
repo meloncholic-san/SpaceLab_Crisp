@@ -1,0 +1,121 @@
+<section class="cart">
+  <p class="cart__breadcrumbs">Home / Shopping Cart</p>
+  <h1 class="cart__title">Shopping Cart</h1>
+
+  <div class="cart__wrapper">
+    <div class="cart__list">
+      <div class="cart__head">
+        <span>PRODUCT</span>
+        <span>PRICE</span>
+        <span>SIZE</span>
+        <span>QUANTITY</span>
+        <span>TOTAL</span>
+      </div>
+
+      <div class="cart__items"></div>
+
+      <div class="cart__actions">
+        <button class="cart__actions-btn"><a href="./products.html">CONTINUE SHOPPING</a></button>
+        <button class="cart__actions-btn" data-action="clear">CLEAR SHOPPING CART</button>
+      </div>
+    </div>
+
+    <div class="cart__sidebar">
+      <div class="cart__sidebar-head">
+        <div class="cart__discount">
+          <h3>Apply Discount Code</h3>
+          <input form="cart__form" name="discountCode" placeholder="Enter discount code" />
+          <button>Apply Discount</button>
+        </div>
+
+        <div class="cart__shipment">
+          <div class="cart__accordion">
+            <h2 class="cart__accordion-title">Estimate Shipping and Tax</h2>
+            <div class="cart__accordion-btn active"></div>
+          </div>
+
+          <div class="cart__accordion-content active">
+            <p>Enter your destination to get a shipping estimate.</p>
+            <form class="cart__form" id="cart-form">
+              <div class="cart__form-wrapper">
+                <div class="cart__fields">
+                  <div class="cart__field">
+                    <label class="cart__label">Country <span>*</span></label>
+                    <div class="cart-select" data-select="country">
+                      <div class="cart-select__selected">United States</div>
+                      <div class="cart-select__dropdown"></div>
+                    </div>
+                  </div>
+
+                  <div class="cart__field">
+                    <label class="cart__label">State <span>*</span></label>
+                    <div class="cart-select" data-select="state">
+                      <div class="cart-select__selected">Select state</div>
+                      <div class="cart-select__dropdown"></div>
+                    </div>
+                  </div>
+
+                  <div class="cart__field">
+                    <label class="cart__label">Zip/Postal Code</label>
+                    <input class="cart__input" type="text" id="zip" name="zip" />
+                  </div>
+                </div> 
+
+                <div class="cart__rate">
+                    <label class="cart__rate-item">
+                        <p>Flat Rate</p>
+                        <div class="cart__rate-item-inner">
+                            <input type="radio" name="shipping" value="flat" class="cart__rate-radio" checked>
+                            <span class="cart__rate-custom"></span>
+                            <span class="cart__rate-label">
+                            <span class="cart__rate-label-phrase">Fixed 5.00 EUR</span>
+                            </span>
+                        </div>
+
+
+                    </label>
+
+                    <label class="cart__rate-item">
+                        <p>Best Way</p>
+
+                        <div class="cart__rate-item-inner">
+                            <input type="radio" name="shipping" value="best" class="cart__rate-radio">
+                            <span class="cart__rate-custom"></span>
+                            <span class="cart__rate-label">
+                            <span class="cart__rate-label-phrase">Table Rate 10.00 EUR</span>
+                            </span>
+                        </div>
+
+                    </label>
+                </div>
+
+              </div> 
+            </form>
+          </div> 
+        </div> 
+      </div> 
+
+      <div class="cart__summary">
+        <div class="cart__pricing">
+            <div class="cart__subtotal">
+                <span>Subtotal</span>
+                <span>{{subtotal}} EUR</span>
+            </div>
+
+            <div class="cart__tax">
+                <span>Tax</span>
+                <span>{{tax}} EUR</span>
+            </div>
+
+            <div class="cart__total">
+            <span>Order Total</span>
+                <span>{{total}} EUR</span>  
+            </div>
+        </div>
+
+        <button class="cart__checkout-multi">Check Out with Multiple Addresses</button>
+        <button class="cart__checkout" type="submit" form="cart-form">PROCEED TO CHECKOUT</button>
+      </div>
+    </div> 
+  </div> 
+</section> 

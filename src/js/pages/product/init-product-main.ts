@@ -1,5 +1,22 @@
+import { showToast } from "../../components/show-toast";
+import { addCartProduct } from "../../services/cart";
 import { getProductById } from "../../services/products";
 import { renderSingleProduct } from "./render-single-product";
+
+const colorReverseMap: Record<string, string> = {
+  "Charcoal": "Charcoal",
+  "Ivory": "Ivory",
+  "Navy-Blue": "Navy Blue",
+  "Deep-Teal": "Deep Teal",
+  "Warm-Gray": "Warm Gray",
+  "Muted-Indigo": "Muted Indigo",
+  "Cool-Gray": "Cool Gray",
+  "Burgundy": "Burgundy",
+  "Mustard": "Mustard",
+  "Brown": "Brown",
+  "Dusty-Rose": "Dusty Rose",
+  "Turquoise": "Turquoise",
+};
 
 function initProductGallery(container: HTMLElement) {
   const mainImg = container.querySelector(".product__main-image") as HTMLImageElement;
@@ -73,6 +90,107 @@ function initImageZoom(wrapper: HTMLElement) {
   });
 }
 
+function initQuantity(container: HTMLElement) {
+  const minusBtn = container.querySelector(".product__pricing-quantity-btn-menus");
+  const plusBtn = container.querySelector(".product__pricing-quantity-btn-plus");
+  const valueEl = container.querySelector(".product__pricing-quantity-span");
+
+  if (!minusBtn || !plusBtn || !valueEl) return;
+
+  plusBtn.addEventListener("click", () => {
+    productState.quantity++;
+    valueEl.textContent = String(productState.quantity);
+  });
+
+  minusBtn.addEventListener("click", () => {
+    if (productState.quantity > 1) {
+      productState.quantity--;
+      valueEl.textContent = String(productState.quantity);
+    }
+  });
+}
+
+function initSizes(container: HTMLElement) {
+  const sizes = container.querySelectorAll<HTMLElement>(".product__size");
+
+  sizes.forEach(size => {
+    if (size.classList.contains("disabled")) return;
+
+    size.addEventListener("click", () => {
+      sizes.forEach(s => s.classList.remove("active"));
+      size.classList.add("active");
+
+      productState.selectedSize = size.dataset.size || null;
+    });
+  });
+}
+
+function initColors(container: HTMLElement) {
+  const colors = container.querySelectorAll<HTMLElement>(".product__color");
+
+  colors.forEach(color => {
+    color.addEventListener("click", () => {
+      colors.forEach(c => c.classList.remove("active"));
+      color.classList.add("active");
+
+      const classList = Array.from(color.classList);
+      const colorClass = classList.find(c => c !== "product__color" && c !== "active");
+      if (!colorClass) return;
+
+      productState.selectedColor = colorReverseMap[colorClass] ?? colorClass;
+    });
+  });
+}
+
+function initAddToCart(container: HTMLElement, productPrice: number) {
+  const btn = container.querySelector(".product__add-to-cart");
+  if (!btn) return;
+
+  btn.addEventListener("click", async () => {
+    if (!productState.selectedSize) {
+      showToast("Select size", "warning");
+      return;
+    }
+    if (!productState.selectedColor) {
+      showToast("Select color", "warning");
+      return;
+    }
+
+    await addCartProduct({
+      product: {
+        id: productState.id,
+        title: productState.title,
+        price: productPrice,
+        image: productState.image,
+      },
+      quantity: productState.quantity,
+      selectedColor: productState.selectedColor,
+      selectedSize: Number(productState.selectedSize),
+    });
+    showToast("Added to cart", "success");
+  });
+}
+
+
+type ProductState = {
+  id: string;
+  quantity: number;
+  title: string;
+  selectedSize: string | null;
+  selectedColor: string | null;
+  price: number;
+  image: string;
+};
+
+const productState: ProductState = {
+    id: "",
+    quantity: 1,
+    title: "",
+    selectedSize: null,
+    selectedColor: null,
+    price: 0,
+    image: "",
+  };
 
 export async function initProductMain() {
   const container = document.querySelector(".product-main-content") as HTMLElement;
@@ -83,6 +201,17 @@ export async function initProductMain() {
   try {
     const product = await getProductById(id);
     renderSingleProduct(product, container);
+    productState.id = product.id;
+    productState.title = product.title;
+    productState.image = product.image;
+    if (product.discount_percent) {
+      const discountedPrice = product.price * (1 - product.discount_percent / 100);
+      productState.price = Number(discountedPrice.toFixed(2));
+    } else {
+      productState.price = Number(product.price.toFixed(2));
+    }
+
+    console.log(product)
   } catch {
     container.innerHTML = `<p>Error loading product</p>`;
   }
@@ -96,4 +225,10 @@ export async function initProductMain() {
     initProductGallery(galleryContainer);
     initAccordion(descriptionContainer);
     if (mainWrapper) initImageZoom(mainWrapper);
+
+    initSizes(container);
+    initColors(container);
+    initQuantity(container);
+    initAddToCart(container, productState.price);
+
 }

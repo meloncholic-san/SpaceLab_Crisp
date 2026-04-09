@@ -1,0 +1,178 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+.profile-sidebar {
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: fit-content;
+  }
+
+  &__btn {
+    font-family: variables.$font-family-main;
+    font-weight: variables.$font-weight-regular;
+    font-size: 18px; 
+    cursor: pointer;
+    color: #828282;
+    width: 275px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding-left: 13px;
+    &.active {
+      background: #eee;
+      color: #000;
+      font-weight: 600;
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+
+.profile__wrapper {
+    max-width: 1454px;
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid #C4C4C4;
+    width: 100%;
+    padding-top: 73px;
+    margin-bottom: 67px;
+      &.account {
+        padding-bottom: 310px;
+        align-items: center;
+        justify-content: center;
+        gap: 108px;
+          @include respond-to(md) {
+            border: none;
+            flex-direction: column; 
+            padding-left: 20px;             
+            padding-right: 20px;     
+
+          }
+      }
+      &.address {
+        padding-bottom: 171px;
+        justify-content: center;
+        gap: 108px;
+          @include respond-to(md) {
+            border: none;
+            flex-direction: column; 
+            padding-left: 20px;             
+            padding-right: 20px;     
+
+          }
+      }
+      &.orders {
+      justify-content: center;
+      gap: 100px;
+      padding-bottom: 171px;
+        @include respond-to(md) {
+            flex-direction: column;
+            gap: 20px;
+        }
+      }
+      &.favourites {
+        justify-content: center;
+        gap: 100px;
+        padding-bottom: 171px;
+          @include respond-to(md) {
+              flex-direction: column;
+              gap: 20px;
+          }
+      }
+      &.newsletter {
+        justify-content: center;
+        gap: 100px;
+        padding-bottom: 171px;
+              @include respond-to(md) {
+              flex-direction: column;
+              gap: 20px;
+              border: none;
+          }
+      }
+      &.dashboard {
+        justify-content: center;
+        gap: 100px;
+        padding-bottom: 171px;
+          @include respond-to(md) {
+              flex-direction: column;
+              gap: 20px;
+              border: none;
+              padding-bottom: 0px;
+          }
+      }
+}
+
+.profile__section {
+  flex: 1;
+  &.account {
+    max-width: 528px;
+      @include respond-to(md) {
+          width: 100%;
+          max-width: unset;
+      }
+  }
+  &.address {
+    max-width: 541px;
+  }
+  &.orders {
+    max-width: 600px;
+      @include respond-to(md) {
+        padding: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+  }
+  &.favourites {
+    max-width: 660px;
+      @include respond-to(md) {
+        padding: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-width: unset;
+      }
+  }
+    &.newsletter {
+      @include respond-to(md) {
+        padding: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-width: unset;
+      }
+  }
+  &.profile {
+    max-width: 634px;
+      @include respond-to(md) {
+        padding: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-width: unset;
+        
+      }
+  }
+}
+
+.profile__breadcrumbs {
+    font-family: variables.$font-family-second;
+    font-weight: variables.$font-weight-regular;
+    font-size: 14px; 
+    color: #828282;
+    margin-bottom: 24px;
+    text-align: center;
+    padding-top: 130px;
+  }
+
+  .profile__title {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-regular;
+        font-size: 48px; 
+        text-align: center;
+        line-height: 68px;
+        margin-bottom: 18px;
+  }
+

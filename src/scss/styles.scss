@@ -3,11 +3,11 @@
 @use "@scss/fonts/fonts";
 @use "@scss/utils/animations";
 
-
 @use "@scss/components/order-btn";
 @use "@scss/components/product-card";
 @use "@scss/components/footer";
 @use "@scss/components/header";
+@use "@scss/components/toast";
 
 @use "@scss/pages/main/main-hero";
 @use "@scss/pages/main/main-brand";
@@ -30,6 +30,22 @@
 @use "@scss/pages/article/article-main";
 @use "@scss/pages/article/article-featured";
 
+@use "@scss/pages/auth/register";
+@use "@scss/pages/auth/login";
+
+@use "@scss/pages/cart/cart";
+@use "@scss/pages/cart/cart-product";
+
+@use "@scss/pages/checkout/checkout";
+@use "@scss/pages/checkout/checkout-item";
+
+@use "@scss/pages/profile/profile-sidebar";
+@use "@scss/pages/profile/profile-account";
+@use "@scss/pages/profile/profile-address";
+@use "@scss/pages/profile/profile-orders";
+@use "@scss/pages/profile/profile-favourites";
+@use "@scss/pages/profile/profile-favourite-item";
+@use "@scss/pages/profile/profile-dashboard";
 
 @import 'swiper/css';
 @import 'swiper/css/navigation';

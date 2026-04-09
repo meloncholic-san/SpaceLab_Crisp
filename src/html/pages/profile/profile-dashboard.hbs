@@ -1,0 +1,69 @@
+<section class="profile__section profile" data-page="profile">
+  <div class="profile-dashboard">
+      <h1 class="profile-dashboard__title">Account Information</h1>
+
+      <div class="profile-dashboard__grid">
+
+        <!-- CONTACT -->
+        <div class="profile-dashboard__block">
+          <h3>Contact Information</h3>
+
+          <p>{{fullName}}</p>
+          <p>{{email}}</p>
+
+          <div class="profile-dashboard__actions">
+            <a href="./account.html">Edit</a>
+            <a href="./account.html">Change Password</a>
+          </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="profile-dashboard__block">
+          <h3>Newsletters</h3>
+
+          {{#if isSubscribed}}
+            <p>You have already subscribed to our newsletter.</p>
+          {{else}}
+            <p>You don't subscribe to our newsletter.</p>
+          {{/if}}
+
+          <div class="profile-dashboard__actions">
+            <a href="./newsletter.html">Edit</a>
+          </div>
+        </div>
+
+        <!-- BILLING -->
+        <div class="profile-dashboard__block">
+          <h3>Default Billing Address</h3>
+
+          {{#if hasAddress}}
+            <p>{{addressLine}}</p>
+          {{else}}
+            <p>You have not set a default billing address.</p>
+          {{/if}}
+
+          <div class="profile-dashboard__actions">
+            <a href="./address.html">Edit Address</a>
+          </div>
+        </div>
+
+        <!-- SHIPPING -->
+        <div class="profile-dashboard__block">
+          <h3>Default Shipping Address</h3>
+
+          {{#if hasAddress}}
+            <p>{{addressLine}}</p>
+          {{else}}
+            <p>You have not set a default shipping address.</p>
+          {{/if}}
+
+          <div class="profile-dashboard__actions">
+            <a href="./address.html">Edit Address</a>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,216 @@
+@use "@scss/utils/variables";
+@use '@scss/utils/mixins' as *;
+
+
+.favourites-item {
+    display: flex;
+    gap: 10px;
+    position: relative;
+
+    &__content {
+        display: flex;
+        max-width: 167px;
+        flex-direction: column;
+        position: relative;
+    }
+
+    &__image-wrapper {
+        flex-shrink: 0;
+        width: 167px;
+        height: 219px;
+        overflow: hidden;
+        border-radius: 4px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__pricing {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    &__info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        h3 {
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 18px;
+            margin-top: 7px; 
+            margin-bottom: 12px;
+            min-height: 41px;
+        }
+
+        .old-price {
+            font-size: 14px;
+            font-weight: variables.$font-weight-regular;
+            text-decoration: line-through;
+            color: black;
+        }
+
+        .price {
+            font-family: variables.$font-family-second;
+            font-weight: variables.$font-weight-medium;
+            font-size: 14px;
+            color: #828282;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 30px;
+            background-color: black;
+            color: white;
+            font-family: "Oswald", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            width: 40px;
+            height: 20px;
+            text-align: center;
+        }
+    }
+
+    &__quantity-wrapper {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        label {
+            margin-bottom: 4px;
+            font-weight: variables.$font-weight-regular;
+        }
+        input {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #C4C4C4;
+            font-size: 14px;
+            text-align: center;
+            font-family: variables.$font-family-main;
+            font-weight: variables.$font-weight-regular;
+            font-size: 16px;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    &__btn-add {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 14px;
+        width: 117px;
+        height: 40px;
+        text-align: center;
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+    }
+    &__sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__colors {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    &__color-badge {
+    width: 15px;
+    height: 15px;
+    display: block;
+    caret-color: transparent;
+    position: relative;
+    cursor: pointer;
+
+        &.Charcoal {
+            background-color: #292A2D;
+        }
+        &.Ivory {
+            background-color: #F3ECE2;   
+        }
+        &.Navy {
+            background-color: #24426A;
+        }
+        &.Deep {
+            background-color: #18574A;
+        }
+        &.Warm {
+            background-color: #C2BEB6;
+        }
+        &.Muted {
+            background-color: #666689;
+        }
+        &.Cool {
+            background-color: #AAABA7;
+        }
+        &.Burgundy {
+            background-color: #971E34;
+        }
+        &.Mustard {
+            background-color: #CBA13E;
+        }
+        &.Brown {
+            background-color: #73513C;
+        }
+        &.Dusty {
+            background-color: #DAB1B1;
+        }
+        &.Turquoise {
+            background-color: #2B9FA7;
+        }
+
+        &.active {
+            &::before {
+                content: "";
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                border: 2px solid black;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    &__sizes {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    &__size-badge {
+        font-family: variables.$font-family-main;
+        font-weight: variables.$font-weight-medium;
+        font-size: 14px;
+            &.active {
+                color: red;
+            }
+    }
+
+    &__modal {
+        display: none;
+            &.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            width: 83%;
+            height: 100%;
+            background: white;
+            opacity: 0.9;
+            }
+    }
+}
