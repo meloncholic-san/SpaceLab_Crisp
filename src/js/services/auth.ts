@@ -1,5 +1,6 @@
-import { supabase } from '../api/supabase';
-
+import { guestSupabase, supabase } from '../api/supabase';
+import type { Session, AuthChangeEvent } from "@supabase/supabase-js";
+import { syncLocalCartToDatabase } from './local-cart';
 
 export interface RegisterPayload {
   email: string;
@@ -98,4 +99,52 @@ export async function signOut() {
   const { error } = await supabase.auth.signOut();
 
   if (error) throw error;
+}
+
+export async function getClient() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session ? supabase : guestSupabase;
+}
+
+export async function getCurrentSession() {
+  const { data } = await supabase.auth.getSession();
+  return data.session?.user ?? null;
+}
+
+export function listenAuthStatus(): void {
+  supabase.auth.onAuthStateChange(
+    async (event: AuthChangeEvent, session: Session | null) => {
+      console.log("Auth state changed:", event);
+
+      switch (event) {
+        case "SIGNED_IN":
+          console.log("User signed in:", session?.user.email);
+
+          try {
+            await syncLocalCartToDatabase();
+          } catch (err) {
+            console.error("Cart sync failed:", err);
+          }
+
+          break;
+
+        case "SIGNED_OUT":
+          console.log("User signed out");
+          window.location.href = "./login.html";
+          break;
+
+        case "USER_UPDATED":
+          console.log("User updated");
+          break;
+
+        case "TOKEN_REFRESHED":
+          console.log("Token refreshed");
+          break;
+
+        case "PASSWORD_RECOVERY":
+          console.log("Password recovery");
+          break;
+      }
+    }
+  );
 }

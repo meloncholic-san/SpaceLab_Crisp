@@ -1,9 +1,10 @@
 import { supabase, guestSupabase } from "../api/supabase";
-import { getCurrentUser } from "./auth";
+import { getCurrentSession, getCurrentUser } from "./auth";
 import { createShippingAddress } from "./profile";
 import { getCartProducts } from "./cart";
 import { getLocalCart } from "./local-cart";
 import type { ShippingData } from "./profile";
+import { getGuestId } from "./guest";
 
 export interface CartItem {
   product_id: string;
@@ -38,7 +39,7 @@ export async function createOrder({totals,discountCode,shippingMethod,shippingAd
   status?: string;
 }) {
   const user = await getCurrentUser();
-  const client = user ? supabase : guestSupabase;
+  const client = supabase;
 
   const { data, error } = await client
     .from("orders")
@@ -79,49 +80,110 @@ export async function createOrderItems(orderId: string, cart: CartItem[]) {
 
 export async function checkout(payload: CheckoutPayload) {
   try {
-    const user = await getCurrentUser();
+    const user = await getCurrentSession();
     const isGuest = !user;
+    const client = supabase;
 
-    const cart = payload.cart ?? (user ? await getCartProducts() : getLocalCart());
+    const cart =
+      payload.cart ??
+      (user ? await getCartProducts() : getLocalCart());
+
     if (!cart?.length) {
-      return { error: { stage: "cartEmpty", message: "Cart is empty" } };
+      return {
+        error: { stage: "cartEmpty", message: "Cart is empty" },
+      };
     }
 
-
     let shippingAddressId: string | undefined;
+
     if (payload.shipping && !isGuest) {
       try {
         const address = await createShippingAddress(payload.shipping);
         shippingAddressId = address.id;
       } catch (err: any) {
-        return { error: { stage: "createShippingAddress", message: err.message } };
+        return {
+          error: {
+            stage: "createShippingAddress",
+            message: err.message,
+          },
+        };
       }
     }
-
     let order;
 
     try {
-      order = await createOrder({
-        totals: payload.totals,
-        discountCode: payload.discountCode,
-        shippingMethod: payload.shippingMethod,
-        shippingAddressId,
-        status: "processing",
-      });
+      const { data, error } = await client
+        .from("orders")
+        .insert({
+          user_id: user?.id ?? null,
+          guest_id: isGuest ? getGuestId() : null,
+
+          subtotal: payload.totals.subtotal,
+          tax: payload.totals.tax,
+          total: payload.totals.total,
+
+          discount_code: payload.discountCode || null,
+          shipping_method: payload.shippingMethod || null,
+          shipping_address_id: shippingAddressId ?? null,
+
+          status: "processing",
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      order = data;
     } catch (err: any) {
-      return { error: { stage: "createOrder", message: err.message } };
+      return {
+        error: {
+          stage: "createOrder",
+          message: err.message,
+        },
+      };
     }
 
     try {
-      await createOrderItems(order.id, cart);
+      const items = cart.map((item: any) => ({
+        order_id: order.id,
+
+        product_id: item.product_id || item.id,
+        price: item.price,
+        quantity: item.quantity,
+
+        selected_color:
+          item.selected_color || item.selectedColor || null,
+        selected_size:
+          item.selected_size || item.selectedSize || null,
+      }));
+
+      const { error } = await client
+        .from("order_items")
+        .insert(items);
+
+      if (error) throw error;
     } catch (err: any) {
-      await updateOrderStatus(order.id, "failed");
-      return { error: { stage: "createOrderItems", message: err.message } };
+      await client
+        .from("orders")
+        .update({ status: "failed" })
+        .eq("id", order.id);
+
+      return {
+        error: {
+          stage: "createOrderItems",
+          message: err.message,
+        },
+      };
     }
 
     return { order };
   } catch (err: any) {
-    return { error: { stage: "checkoutUnknown", message: err.message } };
+    return {
+      error: {
+        stage: "checkoutUnknown",
+        message: err.message,
+      },
+    };
   }
 }
 

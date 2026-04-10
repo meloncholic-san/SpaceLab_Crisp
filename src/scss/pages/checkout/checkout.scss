@@ -218,6 +218,26 @@
             padding: 10px;
             border: 1px solid #ccc;
             background-color: white;
+            position: relative;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 13px;
+                    right: 18px;
+                    width: 8px;
+                    height: 8px;
+                    border-top: 1.5px solid black;
+                    border-left: 1.5px solid black;
+                    transform: rotate(-135deg);
+                }
+        }
+        &.open {
+            .cart-select__selected {
+                &::before {
+                    transform: rotate(-315deg);
+                    top: 21px;
+                }
+            }
         }
 
         &__dropdown {
